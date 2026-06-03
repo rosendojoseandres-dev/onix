@@ -37,7 +37,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="flex flex-col">
             <Link href="/" className="inline-block mb-3">
-              <img src="/onix.svg" alt="Onix Logo" className="h-10 sm:h-12 w-auto object-contain -ml-1" />
+              <img src="/onix.svg" alt="Onix Logo" className="h-6 sm:h-8 w-auto object-contain -ml-1" />
             </Link>
             <p className="text-zinc-400 text-sm leading-relaxed max-w-xs mb-6">
               Importamos y distribuimos la mejor tecnología, calzado y moda. Calidad premium garantizada, directo a tus manos.

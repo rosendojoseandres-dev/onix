@@ -181,7 +181,7 @@ function EmptyCart({ onClose }: { onClose: () => void }) {
       </motion.div>
 
       <h3 className="text-lg font-semibold text-[#f4f4f4] mb-2">
-        Tu carrito está vacío
+        Tu bolsa está vacía
       </h3>
       <p className="text-zinc-500 text-sm mb-8 max-w-[220px]">
         Explora nuestro catálogo y agrega los productos que más te gusten
@@ -258,7 +258,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
             {/* Header */}
             <div className="flex items-center justify-between px-5 sm:px-6 py-5 border-b border-white/[0.06] shrink-0">
               <div className="flex items-center gap-3">
-                <h2 className="text-lg font-semibold text-[#f4f4f4]">Tu Carrito</h2>
+                <h2 className="text-lg font-semibold text-[#f4f4f4]">Tu Bolsa</h2>
                 {totalItems > 0 && (
                   <motion.span
                     key={totalItems}
@@ -283,7 +283,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                 <button
                   onClick={onClose}
                   className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.08] transition-all"
-                  aria-label="Cerrar carrito"
+                  aria-label="Cerrar bolsa"
                 >
                   <X size={18} />
                 </button>

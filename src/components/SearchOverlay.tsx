@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X, ShoppingCart, ArrowRight, Sparkles } from 'lucide-react';
+import { Search, X, ShoppingBag, ArrowRight, Sparkles } from 'lucide-react';
 import { PRODUCTS, CATEGORIES, searchProducts, formatPrice, getDiscountPercentage, getCategoryLabel } from '@/store/products';
 import type { Product, ProductCategory } from '@/store/products';
 import { useCart } from '@/store/cart-context';
@@ -150,7 +150,7 @@ function ProductResult({
             ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-400'
             : 'bg-white/[0.04] border border-white/[0.06] text-zinc-400 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.12]'
         }`}
-        aria-label={`Agregar ${product.name} al carrito`}
+        aria-label={`Agregar ${product.name} a la bolsa`}
       >
         {added ? (
           <motion.div
@@ -161,7 +161,7 @@ function ProductResult({
             <Sparkles size={16} />
           </motion.div>
         ) : (
-          <ShoppingCart size={16} />
+          <ShoppingBag size={16} />
         )}
       </motion.button>
     </motion.div>

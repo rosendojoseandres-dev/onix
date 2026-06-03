@@ -111,7 +111,7 @@ export default function Navbar() {
           </button>
           <button
             className="relative text-white/70 hover:text-white transition-colors"
-            aria-label="Carrito"
+            aria-label="Bolsa"
             onClick={() => setIsCartOpen(true)}
           >
             <ShoppingBag size={20} />

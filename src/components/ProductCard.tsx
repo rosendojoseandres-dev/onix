@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
 import { useCart } from '@/store/cart-context';
 import { Product } from '@/data/mockProducts';
@@ -59,9 +59,9 @@ export default function ProductCard({ product }: ProductCardProps) {
             });
           }}
           className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 active:scale-95 transition-all duration-300 shadow-lg z-10 relative"
-          aria-label={`Agregar ${product.name} al carrito`}
+          aria-label={`Agregar ${product.name} a la bolsa`}
         >
-          <ShoppingCart size={18} />
+          <ShoppingBag size={18} />
         </button>
       </div>
     </motion.div>

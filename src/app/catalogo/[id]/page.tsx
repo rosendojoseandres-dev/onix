@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Minus, Plus, ShoppingCart, ArrowLeft, CheckCircle2, XCircle } from 'lucide-react';
+import { Minus, Plus, ShoppingBag, ArrowLeft, CheckCircle2, XCircle } from 'lucide-react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -128,7 +128,7 @@ export default function ProductDetailPage() {
                       <button
                         key={option}
                         onClick={() => setSelectedVariants(prev => ({...prev, [vt.name]: option}))}
-                        className={`px-4 py-2 rounded-xl text-sm font-medium border transition-all ${
+                        className={`px-5 py-3 md:px-4 md:py-2 rounded-xl text-base md:text-sm font-medium border transition-all ${
                           selectedVariants[vt.name] === option
                             ? 'bg-white text-black border-white'
                             : 'bg-zinc-900 text-zinc-400 border-white/10 hover:border-white/30 hover:text-white'
@@ -144,21 +144,21 @@ export default function ProductDetailPage() {
               {/* Add to Cart Actions */}
               <div className="mt-auto flex flex-col sm:flex-row gap-4 pt-6">
                 {/* Quantity */}
-                <div className="flex items-center justify-between bg-zinc-900 border border-white/10 rounded-2xl px-2 w-full sm:w-36 h-14 shrink-0">
+                <div className="flex items-center justify-between bg-zinc-900 border border-white/10 rounded-2xl px-4 md:px-2 w-full sm:w-36 h-16 md:h-14 shrink-0">
                   <button 
                     onClick={handleDecrease}
                     disabled={quantity <= 1 || !product.inStock}
-                    className="w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white disabled:opacity-50 disabled:hover:text-zinc-400 transition-colors"
+                    className="w-12 h-12 md:w-10 md:h-10 flex items-center justify-center text-zinc-400 hover:text-white disabled:opacity-50 disabled:hover:text-zinc-400 transition-colors"
                   >
-                    <Minus size={18} />
+                    <Minus size={20} className="md:w-[18px] md:h-[18px]" />
                   </button>
-                  <span className="text-lg font-medium text-white w-8 text-center">{quantity}</span>
+                  <span className="text-xl md:text-lg font-medium text-white w-8 text-center">{quantity}</span>
                   <button 
                     onClick={handleIncrease}
                     disabled={!product.inStock}
-                    className="w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white disabled:opacity-50 disabled:hover:text-zinc-400 transition-colors"
+                    className="w-12 h-12 md:w-10 md:h-10 flex items-center justify-center text-zinc-400 hover:text-white disabled:opacity-50 disabled:hover:text-zinc-400 transition-colors"
                   >
-                    <Plus size={18} />
+                    <Plus size={20} className="md:w-[18px] md:h-[18px]" />
                   </button>
                 </div>
 
@@ -166,10 +166,10 @@ export default function ProductDetailPage() {
                 <button
                   onClick={handleAddToCart}
                   disabled={!product.inStock}
-                  className="flex-1 h-14 rounded-2xl flex items-center justify-center gap-2 font-medium text-lg transition-all shadow-lg active:scale-[0.98] disabled:active:scale-100 disabled:opacity-50 disabled:cursor-not-allowed bg-white text-black hover:bg-zinc-200"
+                  className="flex-1 h-16 md:h-14 rounded-2xl flex items-center justify-center gap-3 md:gap-2 font-medium text-xl md:text-lg transition-all shadow-lg active:scale-[0.98] disabled:active:scale-100 disabled:opacity-50 disabled:cursor-not-allowed bg-white text-black hover:bg-zinc-200"
                 >
-                  <ShoppingCart size={20} />
-                  {product.inStock ? 'Añadir al Carrito' : 'Agotado'}
+                  <ShoppingBag size={24} className="md:w-5 md:h-5" />
+                  {product.inStock ? 'Añadir a la Bolsa' : 'Agotado'}
                 </button>
               </div>
 

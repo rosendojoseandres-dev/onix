@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import {
-  ShoppingCart,
+  ShoppingBag,
   Globe,
   PackageCheck,
   Package,
@@ -54,7 +54,7 @@ function BentoSteps() {
           transition={{ delay: 0.2 }}
           className="md:col-span-2 bg-zinc-900/30 backdrop-blur-xl rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden border border-white/[0.05] group hover:border-cyan-500/30 hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-500"
         >
-          <ShoppingCart className="absolute -right-12 -bottom-12 text-cyan-500/[0.05] w-72 h-72 group-hover:scale-105 group-hover:text-cyan-500/[0.08] transition-all duration-700 pointer-events-none" />
+          <ShoppingBag className="absolute -right-12 -bottom-12 text-cyan-500/[0.05] w-72 h-72 group-hover:scale-105 group-hover:text-cyan-500/[0.08] transition-all duration-700 pointer-events-none" />
           <div className="relative z-10">
             <span className="inline-block px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/10 text-cyan-400 text-xs font-bold uppercase tracking-widest mb-6 shadow-[0_0_15px_rgba(6,182,212,0.15)]">Paso 01</span>
             <h3 className="text-3xl sm:text-4xl font-semibold text-white mb-4">Elige tus Productos</h3>

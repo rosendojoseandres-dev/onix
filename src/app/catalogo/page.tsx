@@ -134,17 +134,19 @@ export default function CatalogPage() {
           </div>
 
           {/* Product Grid */}
-          <div 
+          <motion.div 
+            layout
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
           >
             <AnimatePresence mode="popLayout">
               {filteredProducts.map((product) => (
                 <motion.div
                   key={product.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4 }}
                 >
                   <ProductCard product={product} />
                 </motion.div>
@@ -170,7 +172,7 @@ export default function CatalogPage() {
                 </button>
               </motion.div>
             )}
-          </div>
+          </motion.div>
         </section>
 
         <Footer />

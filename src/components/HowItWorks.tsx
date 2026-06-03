@@ -26,17 +26,17 @@ function BentoSteps() {
       {/* Header */}
       <div className="text-center md:text-left mb-16 md:mb-24 relative z-10">
         <motion.h2 
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
+          viewport={{ once: true }}
           className="text-3xl sm:text-4xl font-semibold tracking-tight text-white mb-6"
         >
           ¿Cómo Funciona?
         </motion.h2>
         <motion.p 
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
+          viewport={{ once: true }}
           transition={{ delay: 0.1 }}
           className="text-zinc-400 text-lg md:text-xl leading-relaxed max-w-2xl"
         >
@@ -48,11 +48,11 @@ function BentoSteps() {
         
         {/* Step 1: Big Horizontal Box */}
         <motion.div 
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
+          viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="md:col-span-2 bg-zinc-900/30 backdrop-blur-xl rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden border border-white/[0.05] group hover:border-cyan-500/30 hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-500"
+          className="md:col-span-2 bg-zinc-900/30 backdrop-blur-xl rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden border border-white/[0.05] group hover:border-cyan-500/30 hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-colors transition-shadow duration-500"
         >
           <ShoppingBag className="absolute -right-12 -bottom-12 text-cyan-500/[0.05] w-72 h-72 group-hover:scale-105 group-hover:text-cyan-500/[0.08] transition-all duration-700 pointer-events-none" />
           <div className="relative z-10">
@@ -66,11 +66,11 @@ function BentoSteps() {
 
         {/* Step 2: Vertical Box */}
         <motion.div 
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
+          viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="md:col-span-1 bg-zinc-900/30 backdrop-blur-xl rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden border border-white/[0.05] group hover:border-indigo-500/30 hover:shadow-[0_0_40px_rgba(99,102,241,0.1)] transition-all duration-500"
+          className="md:col-span-1 bg-zinc-900/30 backdrop-blur-xl rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden border border-white/[0.05] group hover:border-indigo-500/30 hover:shadow-[0_0_40px_rgba(99,102,241,0.1)] transition-colors transition-shadow duration-500"
         >
           <Globe className="absolute -right-8 -bottom-8 text-indigo-500/[0.05] w-56 h-56 group-hover:scale-105 group-hover:text-indigo-500/[0.08] transition-all duration-700 pointer-events-none" />
           <div className="relative z-10">
@@ -84,11 +84,11 @@ function BentoSteps() {
 
         {/* Step 3: Full Width Bottom Box */}
         <motion.div 
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
+          viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="md:col-span-3 bg-zinc-900/30 backdrop-blur-xl rounded-[2.5rem] p-8 sm:p-12 md:p-16 relative overflow-hidden border border-white/[0.05] group hover:border-violet-500/30 hover:shadow-[0_0_40px_rgba(139,92,246,0.1)] transition-all duration-500 flex flex-col md:flex-row items-center justify-between gap-8"
+          className="md:col-span-3 bg-zinc-900/30 backdrop-blur-xl rounded-[2.5rem] p-8 sm:p-12 md:p-16 relative overflow-hidden border border-white/[0.05] group hover:border-violet-500/30 hover:shadow-[0_0_40px_rgba(139,92,246,0.1)] transition-colors transition-shadow duration-500 flex flex-col md:flex-row items-center justify-between gap-8"
         >
           <PackageCheck className="absolute -left-12 -top-12 text-violet-500/[0.05] w-96 h-96 group-hover:scale-105 group-hover:text-violet-500/[0.08] transition-all duration-700 pointer-events-none" />
           
@@ -129,7 +129,6 @@ function CinematicModalities() {
             src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2500&auto=format&fit=crop" 
             className="absolute inset-0 w-full h-full object-cover opacity-50"
             alt="Casillero Logistics"
-            loading="lazy"
           />
           {/* Subtle Color Tint Overlay */}
           <div className="absolute inset-0 bg-cyan-900/10 mix-blend-color" />
@@ -143,10 +142,10 @@ function CinematicModalities() {
         <div className="relative z-10 w-full max-w-[95%] mx-auto px-4 py-24 flex flex-col md:flex-row items-center">
           <div className="w-full md:w-1/2">
             <motion.div 
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
             >
               <div className="flex items-center gap-3 mb-8">
                 <Package className="text-cyan-400" size={24} />
@@ -185,7 +184,6 @@ function CinematicModalities() {
             src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2500&auto=format&fit=crop" 
             className="absolute inset-0 w-full h-full object-cover opacity-50"
             alt="Delivery Services"
-            loading="lazy"
           />
           {/* Subtle Color Tint Overlay */}
           <div className="absolute inset-0 bg-indigo-900/10 mix-blend-color" />
@@ -199,10 +197,10 @@ function CinematicModalities() {
         <div className="relative z-10 w-full max-w-[95%] mx-auto px-4 py-24 flex flex-col md:flex-row-reverse items-center">
           <div className="w-full md:w-1/2 md:pl-12">
             <motion.div 
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
             >
               <div className="flex items-center gap-3 mb-8">
                 <Truck className="text-indigo-400" size={24} />

@@ -32,14 +32,14 @@ export default function ProductGrid() {
           {MOCK_PRODUCTS.slice(0, 8).map((product, index) => (
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ delay: Math.min(index * 0.04, 0.25) }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
             >
               <Link
                 href={`/catalogo/${product.id}`}
-                className="group flex items-center p-4 bg-zinc-900/50 border border-white/5 rounded-2xl hover:bg-zinc-800/50 hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] h-full"
+                className="group flex items-center p-4 bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded-2xl hover:bg-zinc-800/50 hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] h-full"
               >
                 {/* Product Image */}
                 <div className="w-20 h-20 shrink-0 bg-black/50 rounded-xl overflow-hidden border border-white/5 relative">
@@ -48,7 +48,6 @@ export default function ProductGrid() {
                     src={product.image} 
                     alt={product.name}
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-                    loading="lazy"
                   />
                 </div>
                 

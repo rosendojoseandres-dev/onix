@@ -29,7 +29,7 @@ export default function ProductMarquee() {
             <Link
               href={`/catalogo/${product.id}`}
               key={`first-${product.id}-${index}`}
-              className="group/card relative flex items-center bg-zinc-900/60 border border-white/5 rounded-2xl md:rounded-3xl p-4 md:p-6 w-[280px] md:w-[380px] hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] overflow-hidden shrink-0"
+              className="group/card relative flex items-center bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded-2xl md:rounded-3xl p-4 md:p-6 w-[280px] md:w-[380px] hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] overflow-hidden shrink-0"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
@@ -52,7 +52,6 @@ export default function ProductMarquee() {
                   src={product.image} 
                   alt={product.name}
                   className="w-full h-full object-cover opacity-80 group-hover/card:opacity-100 group-hover/card:scale-110 transition-all duration-700"
-                  loading="lazy"
                 />
               </div>
             </Link>
@@ -69,7 +68,7 @@ export default function ProductMarquee() {
             <Link
               href={`/catalogo/${product.id}`}
               key={`second-${product.id}-${index}`}
-              className="group/card relative flex items-center bg-zinc-900/60 border border-white/5 rounded-2xl md:rounded-3xl p-4 md:p-6 w-[280px] md:w-[380px] hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] overflow-hidden shrink-0"
+              className="group/card relative flex items-center bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded-2xl md:rounded-3xl p-4 md:p-6 w-[280px] md:w-[380px] hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] overflow-hidden shrink-0"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
@@ -92,7 +91,6 @@ export default function ProductMarquee() {
                   src={product.image} 
                   alt={product.name}
                   className="w-full h-full object-cover opacity-80 group-hover/card:opacity-100 group-hover/card:scale-110 transition-all duration-700"
-                  loading="lazy"
                 />
               </div>
             </Link>

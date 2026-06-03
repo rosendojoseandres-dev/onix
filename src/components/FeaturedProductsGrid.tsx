@@ -58,14 +58,14 @@ export default function FeaturedProductsGrid() {
             return (
               <motion.div
                 key={`featured-${product.id}-${index}`}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{ delay: Math.min(index * 0.04, 0.3) }}
               >
                 <Link
                   href={`/catalogo/${product.id}`}
-                  className="group block h-full bg-zinc-900/30 backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:bg-zinc-800/40 hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.03)]"
+                  className="group block h-full bg-zinc-900/40 border border-white/5 rounded-2xl overflow-hidden hover:bg-zinc-800/40 hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.03)]"
                 >
                   {/* Top Image Area */}
                   <div className="w-full aspect-square relative bg-black/40 overflow-hidden p-6 flex items-center justify-center">
@@ -74,6 +74,7 @@ export default function FeaturedProductsGrid() {
                       src={product.image} 
                       alt={product.name}
                       className="w-full h-full object-cover rounded-xl opacity-90 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700"
+                      loading="lazy"
                     />
                   </div>
 

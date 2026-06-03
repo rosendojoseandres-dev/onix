@@ -14,6 +14,7 @@ export default function IphoneShowcase() {
           src="https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=2500&auto=format&fit=crop"
           className="absolute inset-0 w-full h-full object-cover object-center"
           alt="iPhone 14 Pro Max"
+          loading="lazy"
         />
         
         {/* Subtle Purple Tint Overlay */}
@@ -30,10 +31,10 @@ export default function IphoneShowcase() {
         {/* Floating Text Content */}
         <div className="w-full md:w-1/2 md:pl-12">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: '-50px' }}
           >
             <div className="flex items-center gap-3 mb-8">
               <span className="text-indigo-400 text-xs sm:text-sm font-bold uppercase tracking-[0.25em] drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]">

@@ -98,36 +98,32 @@ const ANIMATIONS: any = {
     },
   },
   item: {
-    hidden: { opacity: 0, y: 20, filter: 'blur(10px)' },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: 'blur(0px)',
       transition: { type: 'spring', stiffness: 100, damping: 20 },
     },
-    exit: { opacity: 0, y: -10, filter: 'blur(5px)' },
+    exit: { opacity: 0, y: -10 },
   },
   image: (isLeft: boolean): Variants => ({
     initial: {
       opacity: 0,
-      scale: 1.5,
-      filter: 'blur(15px)',
-      rotate: isLeft ? -30 : 30,
-      x: isLeft ? -80 : 80,
+      scale: 1.15,
+      rotate: isLeft ? -10 : 10,
+      x: isLeft ? -40 : 40,
     },
     animate: {
       opacity: 1,
       scale: 1,
-      filter: 'blur(0px)',
       rotate: 0,
       x: 0,
-      transition: { type: 'spring', stiffness: 260, damping: 20 },
+      transition: { type: 'spring', stiffness: 200, damping: 24 },
     },
     exit: {
       opacity: 0,
-      scale: 0.6,
-      filter: 'blur(20px)',
-      transition: { duration: 0.25 },
+      scale: 0.85,
+      transition: { duration: 0.2 },
     },
   }),
 };
@@ -151,7 +147,7 @@ const BackgroundGradient = ({ isLeft }: { isLeft: boolean }) => (
 );
 
 const ProductVisual = ({ data, isLeft }: { data: ProductData; isLeft: boolean }) => (
-  <motion.div layout="position" className="relative group shrink-0">
+  <div className="relative group shrink-0">
     {/* Animated Rings */}
     <motion.div
       animate={{ rotate: 360 }}
@@ -187,7 +183,7 @@ const ProductVisual = ({ data, isLeft }: { data: ProductData; isLeft: boolean })
       </motion.div>
     </div>
 
-  </motion.div>
+  </div>
 );
 
 const ProductDetails = ({ data, isLeft }: { data: ProductData; isLeft: boolean }) => {
@@ -284,10 +280,8 @@ export default function EarbudShowcase({ children }: { children?: React.ReactNod
           </div>
         )}
 
-        <motion.div
-          layout
-          transition={{ type: 'spring', bounce: 0, duration: 0.9 }}
-          className={`flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-12 md:gap-24 lg:gap-48 w-full ${
+        <div
+          className={`flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-12 md:gap-24 lg:gap-48 w-full transition-all duration-700 ease-out ${
             isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
           }`}
         >
@@ -295,7 +289,7 @@ export default function EarbudShowcase({ children }: { children?: React.ReactNod
           <ProductVisual data={currentData} isLeft={isLeft} />
 
           {/* Right Column: Content */}
-          <motion.div layout="position" className="w-full max-w-md">
+          <div className="w-full max-w-md">
             <AnimatePresence mode="wait">
               <ProductDetails
                 key={activeSide} // Key forces re-render for animation
@@ -303,8 +297,8 @@ export default function EarbudShowcase({ children }: { children?: React.ReactNod
                 isLeft={isLeft}
               />
             </AnimatePresence>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
       </div>
     </div>

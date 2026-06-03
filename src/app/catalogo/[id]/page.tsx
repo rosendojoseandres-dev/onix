@@ -65,7 +65,7 @@ export default function ProductDetailPage() {
       <main className="min-h-screen flex flex-col relative overflow-x-hidden">
         <Navbar />
 
-        <section className="flex-1 pt-32 pb-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto w-full relative z-10">
+        <section className="flex-1 pt-32 pb-32 sm:pb-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto w-full relative z-10">
           
           {/* Back button */}
           <Link href="/catalogo" className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors mb-8 group">
@@ -128,7 +128,7 @@ export default function ProductDetailPage() {
                       <button
                         key={option}
                         onClick={() => setSelectedVariants(prev => ({...prev, [vt.name]: option}))}
-                        className={`px-6 py-3 md:px-5 md:py-2.5 rounded-full text-base md:text-sm font-semibold border transition-all ${
+                        className={`px-5 py-3 md:px-4 md:py-2 rounded-xl text-base md:text-sm font-medium border transition-all ${
                           selectedVariants[vt.name] === option
                             ? 'bg-white text-black border-white'
                             : 'bg-zinc-900 text-zinc-400 border-white/10 hover:border-white/30 hover:text-white'
@@ -141,22 +141,22 @@ export default function ProductDetailPage() {
                 </div>
               ))}
 
-              {/* Add to Cart Actions */}
-              <div className="mt-auto flex flex-row gap-3 pt-6 w-full">
+              {/* Add to Cart Actions (Sticky on Mobile) */}
+              <div className="fixed sm:static bottom-0 left-0 right-0 p-4 sm:p-0 bg-zinc-950/90 sm:bg-transparent backdrop-blur-xl sm:backdrop-blur-none border-t border-white/10 sm:border-none z-50 flex flex-row gap-3 sm:gap-4 sm:mt-auto sm:pt-6">
                 {/* Quantity */}
-                <div className="flex items-center justify-between bg-zinc-900 border border-white/10 rounded-full px-1.5 w-auto sm:w-36 h-14 shrink-0">
+                <div className="flex items-center justify-between bg-zinc-900 border border-white/10 rounded-2xl px-2 w-[110px] sm:w-36 h-[60px] sm:h-14 shrink-0">
                   <button 
                     onClick={handleDecrease}
                     disabled={quantity <= 1 || !product.inStock}
-                    className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-white/5 text-zinc-400 hover:text-white disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-zinc-400 transition-colors"
+                    className="w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white disabled:opacity-50 disabled:hover:text-zinc-400 transition-colors"
                   >
                     <Minus size={18} />
                   </button>
-                  <span className="text-lg font-semibold text-white w-8 sm:w-10 text-center">{quantity}</span>
+                  <span className="text-lg font-medium text-white w-6 text-center">{quantity}</span>
                   <button 
                     onClick={handleIncrease}
                     disabled={!product.inStock}
-                    className="w-11 h-11 flex items-center justify-center rounded-full hover:bg-white/5 text-zinc-400 hover:text-white disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-zinc-400 transition-colors"
+                    className="w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white disabled:opacity-50 disabled:hover:text-zinc-400 transition-colors"
                   >
                     <Plus size={18} />
                   </button>
@@ -166,11 +166,10 @@ export default function ProductDetailPage() {
                 <button
                   onClick={handleAddToCart}
                   disabled={!product.inStock}
-                  className="flex-1 h-14 rounded-full flex items-center justify-center gap-2 font-semibold text-base sm:text-lg transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] active:scale-[0.98] disabled:active:scale-100 disabled:opacity-50 disabled:cursor-not-allowed bg-white text-black hover:bg-zinc-200"
+                  className="flex-1 h-[60px] sm:h-14 rounded-2xl flex items-center justify-center gap-2 font-medium text-lg transition-all shadow-lg active:scale-[0.98] disabled:active:scale-100 disabled:opacity-50 disabled:cursor-not-allowed bg-white text-black hover:bg-zinc-200"
                 >
                   <ShoppingBag size={20} />
-                  <span className="hidden sm:inline">{product.inStock ? 'Añadir a la Bolsa' : 'Agotado'}</span>
-                  <span className="sm:hidden">{product.inStock ? 'Añadir' : 'Agotado'}</span>
+                  <span className="truncate">{product.inStock ? 'Añadir a la Bolsa' : 'Agotado'}</span>
                 </button>
               </div>
 

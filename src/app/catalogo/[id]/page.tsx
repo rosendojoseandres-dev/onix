@@ -49,10 +49,11 @@ export default function ProductDetailPage() {
     
     for (let i = 0; i < quantity; i++) {
       addItem({ 
+        ...product,
+        category: product.category as any,
+        tags: [],
         id: cartItemId, 
         name: cartItemName, 
-        price: product.price, 
-        image: product.image 
       });
     }
   };

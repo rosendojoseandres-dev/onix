@@ -52,7 +52,11 @@ export default function ProductCard({ product }: ProductCardProps) {
         <button 
           onClick={(e) => {
             e.preventDefault(); // Prevent link navigation
-            addItem({ id: product.id, name: product.name, price: product.price, image: product.image });
+            addItem({ 
+              ...product, 
+              category: product.category as any, 
+              tags: [], 
+            });
           }}
           className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 active:scale-95 transition-all duration-300 shadow-lg z-10 relative"
           aria-label={`Agregar ${product.name} al carrito`}

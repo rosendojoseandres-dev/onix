@@ -196,7 +196,7 @@ export default function Navbar() {
               {/* Bottom section */}
               <div className="shrink-0 border-t border-white/[0.06] px-5 sm:px-6 py-5">
                 <p className="text-xs text-zinc-600 text-center">
-                  © {new Date().getFullYear()} GROC Tienda
+                  © {new Date().getFullYear()} ONIX
                 </p>
               </div>
             </motion.div>

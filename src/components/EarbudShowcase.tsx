@@ -151,17 +151,17 @@ const BackgroundGradient = ({ isLeft }: { isLeft: boolean }) => (
 );
 
 const ProductVisual = ({ data, isLeft }: { data: ProductData; isLeft: boolean }) => (
-  <motion.div layout="position" className="relative group shrink-0">
+  <motion.div layout="position" className="relative group shrink-0 p-10 sm:p-14 md:p-20">
     {/* Animated Rings */}
     <motion.div
       animate={{ rotate: 360 }}
       transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-      className={`absolute inset-[-20%] rounded-full border border-dashed border-white/10 ${data.colors.ring}`}
+      className={`absolute inset-0 rounded-full border border-dashed border-white/10 ${data.colors.ring}`}
     />
     <motion.div
       animate={{ scale: [1, 1.05, 1] }}
       transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-      className={`absolute inset-0 rounded-full bg-gradient-to-br ${data.colors.gradient} blur-2xl opacity-40`}
+      className={`absolute inset-4 sm:inset-6 md:inset-8 rounded-full bg-gradient-to-br ${data.colors.gradient} blur-2xl opacity-40`}
     />
 
     {/* Image Container */}

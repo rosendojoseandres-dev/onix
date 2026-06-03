@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "ONIX | Importación Premium de Artículos",
@@ -16,7 +22,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className="h-full antialiased dark"
+      className={`${spaceGrotesk.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-black text-white selection:bg-zinc-800 overflow-x-hidden">
         <Providers>{children}</Providers>

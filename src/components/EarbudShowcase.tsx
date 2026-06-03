@@ -141,8 +141,8 @@ const BackgroundGradient = ({ isLeft }: { isLeft: boolean }) => (
     <motion.div
       animate={{
         background: isLeft
-          ? 'radial-gradient(circle at 0% 50%, rgba(59, 130, 246, 0.15), transparent 50%)'
-          : 'radial-gradient(circle at 100% 50%, rgba(16, 185, 129, 0.15), transparent 50%)',
+          ? 'radial-gradient(circle at 0% 50%, rgba(59, 130, 246, 0.15), transparent 80%)'
+          : 'radial-gradient(circle at 100% 50%, rgba(16, 185, 129, 0.15), transparent 80%)',
       }}
       transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       className="absolute inset-0"
@@ -151,7 +151,7 @@ const BackgroundGradient = ({ isLeft }: { isLeft: boolean }) => (
 );
 
 const ProductVisual = ({ data, isLeft }: { data: ProductData; isLeft: boolean }) => (
-  <motion.div layout="position" className="relative group shrink-0 p-10 sm:p-14 md:p-20">
+  <motion.div layout="position" className="relative z-20 group shrink-0 p-10 sm:p-14 md:p-20 overflow-visible">
     {/* Animated Rings */}
     <motion.div
       animate={{ rotate: 360 }}
@@ -279,7 +279,7 @@ export default function EarbudShowcase({ children }: { children?: React.ReactNod
       <div className="relative z-10 w-full px-4 sm:px-6 pt-28 sm:pt-32 pb-32 sm:pb-48 lg:pb-64 flex flex-col items-center justify-center max-w-7xl mx-auto min-h-screen">
         {/* Render the hero title or any children inside the component but above the earbuds */}
         {children && (
-          <div className="w-full mb-16 sm:mb-24 md:mb-32 lg:mb-48">
+          <div className="w-full mb-16 sm:mb-24 md:mb-32 lg:mb-48 bg-transparent relative z-10">
             {children}
           </div>
         )}

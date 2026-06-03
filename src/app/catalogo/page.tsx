@@ -148,7 +148,7 @@ export default function CatalogPage() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <ProductCard product={product} />
+                  <ProductCard product={product} disableEntranceAnimation />
                 </motion.div>
               ))}
             </AnimatePresence>

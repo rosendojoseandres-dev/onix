@@ -8,16 +8,17 @@ import { Product } from '@/data/mockProducts';
 
 interface ProductCardProps {
   product: Product;
+  disableEntranceAnimation?: boolean;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, disableEntranceAnimation = false }: ProductCardProps) {
   const { addItem } = useCart();
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      initial={disableEntranceAnimation ? false : { opacity: 0, y: 20 }}
+      whileInView={disableEntranceAnimation ? undefined : { opacity: 1, y: 0 }}
+      viewport={disableEntranceAnimation ? undefined : { once: true }}
       transition={{ duration: 0.5 }}
       whileHover={{ y: -5 }}
       className="group relative flex flex-col bg-zinc-900/50 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-colors duration-300"

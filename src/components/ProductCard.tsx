@@ -20,7 +20,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       whileHover={{ y: -5 }}
-      className="group relative flex flex-col bg-zinc-900/50 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-300"
+      className="group relative flex flex-col bg-zinc-900/50 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-colors duration-300"
     >
       <Link href={`/catalogo/${product.id}`} className="flex flex-col flex-grow">
         {/* Image container */}

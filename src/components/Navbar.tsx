@@ -146,26 +146,26 @@ export default function Navbar() {
               </motion.span>
             </AnimatePresence>
           </button>
-
-          {/* Added to Bag Toast */}
-          <AnimatePresence>
-            {showToast && (
-              <motion.div
-                initial={{ opacity: 0, y: -20, scale: 0.95, filter: 'blur(4px)' }}
-                animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-                exit={{ opacity: 0, y: -10, scale: 0.95, filter: 'blur(4px)' }}
-                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                className="absolute top-full right-0 mt-6 px-4 py-3 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl flex items-center gap-3 w-max z-50 pointer-events-none"
-              >
-                <div className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center shrink-0 shadow-inner">
-                  <ShoppingBag size={16} />
-                </div>
-                <span className="text-sm font-medium text-white pr-2">Tu producto se añadió a la bolsa</span>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
       </motion.nav>
+
+      {/* Global Fixed Toast Notification */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.95, filter: 'blur(4px)' }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, y: -10, scale: 0.95, filter: 'blur(4px)' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            className="fixed top-6 right-4 sm:top-8 sm:right-8 px-3 py-2 bg-white rounded-xl shadow-2xl flex items-center gap-2 w-max z-[100] pointer-events-none"
+          >
+            <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center shrink-0">
+              <ShoppingBag size={12} />
+            </div>
+            <span className="text-xs sm:text-sm font-medium text-black pr-1">Tu producto se añadió a la bolsa</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Mobile Menu Drawer */}
       <AnimatePresence>

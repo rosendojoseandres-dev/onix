@@ -23,31 +23,31 @@ export default function ProductMarquee() {
         <motion.div
           animate={{ x: ['0%', '-100%'] }}
           transition={{ repeat: Infinity, ease: 'linear', duration: 40 }}
-          className="flex w-max gap-6 pr-6 will-change-transform"
+          className="flex w-max gap-4 md:gap-6 pr-4 md:pr-6 will-change-transform"
         >
           {MOCK_PRODUCTS.map((product, index) => (
             <Link
               href={`/catalogo/${product.id}`}
               key={`first-${product.id}-${index}`}
-              className="group/card relative flex items-center bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 w-[380px] hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] overflow-hidden shrink-0"
+              className="group/card relative flex items-center bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded-2xl md:rounded-3xl p-4 md:p-6 w-[280px] md:w-[380px] hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] overflow-hidden shrink-0"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               <div className="flex-1 flex flex-col items-start pr-6 relative z-10">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full bg-white text-black mb-4 shadow-sm group-hover/card:bg-zinc-200 transition-colors">
+                <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 md:px-3 md:py-1.5 rounded-full bg-white text-black mb-3 md:mb-4 shadow-sm group-hover/card:bg-zinc-200 transition-colors">
                   {product.isNew ? 'Nuevo' : 'Destacado'}
                 </span>
                 
-                <h3 className="text-lg font-semibold text-white mb-2 leading-tight">
+                <h3 className="text-base md:text-lg font-semibold text-white mb-1 md:mb-2 leading-tight">
                   {product.name}
                 </h3>
                 
-                <p className="text-xl font-bold text-emerald-400">
+                <p className="text-lg md:text-xl font-bold text-emerald-400">
                   ${product.price}
                 </p>
               </div>
 
-              <div className="w-32 h-32 relative shrink-0 rounded-2xl overflow-hidden border border-white/5 bg-black/50">
+              <div className="w-24 h-24 md:w-32 md:h-32 relative shrink-0 rounded-xl md:rounded-2xl overflow-hidden border border-white/5 bg-black/50">
                 <img 
                   src={product.image} 
                   alt={product.name}
@@ -61,32 +61,32 @@ export default function ProductMarquee() {
         <motion.div
           animate={{ x: ['0%', '-100%'] }}
           transition={{ repeat: Infinity, ease: 'linear', duration: 40 }}
-          className="flex w-max gap-6 pr-6 will-change-transform"
+          className="flex w-max gap-4 md:gap-6 pr-4 md:pr-6 will-change-transform"
           aria-hidden="true"
         >
           {MOCK_PRODUCTS.map((product, index) => (
             <Link
               href={`/catalogo/${product.id}`}
               key={`second-${product.id}-${index}`}
-              className="group/card relative flex items-center bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 w-[380px] hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] overflow-hidden shrink-0"
+              className="group/card relative flex items-center bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded-2xl md:rounded-3xl p-4 md:p-6 w-[280px] md:w-[380px] hover:border-white/20 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] overflow-hidden shrink-0"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               <div className="flex-1 flex flex-col items-start pr-6 relative z-10">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full bg-white text-black mb-4 shadow-sm group-hover/card:bg-zinc-200 transition-colors">
+                <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 md:px-3 md:py-1.5 rounded-full bg-white text-black mb-3 md:mb-4 shadow-sm group-hover/card:bg-zinc-200 transition-colors">
                   {product.isNew ? 'Nuevo' : 'Destacado'}
                 </span>
                 
-                <h3 className="text-lg font-semibold text-white mb-2 leading-tight">
+                <h3 className="text-base md:text-lg font-semibold text-white mb-1 md:mb-2 leading-tight">
                   {product.name}
                 </h3>
                 
-                <p className="text-xl font-bold text-emerald-400">
+                <p className="text-lg md:text-xl font-bold text-emerald-400">
                   ${product.price}
                 </p>
               </div>
 
-              <div className="w-32 h-32 relative shrink-0 rounded-2xl overflow-hidden border border-white/5 bg-black/50">
+              <div className="w-24 h-24 md:w-32 md:h-32 relative shrink-0 rounded-xl md:rounded-2xl overflow-hidden border border-white/5 bg-black/50">
                 <img 
                   src={product.image} 
                   alt={product.name}

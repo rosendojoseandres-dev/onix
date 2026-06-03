@@ -23,7 +23,7 @@ export default function Home() {
           <div className="text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-4 text-[#f4f4f4]">
               Selección Global.
-              <br className="hidden md:block" />
+              <br />
               Entrega Impecable.
             </h1>
             <p className="text-zinc-400 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto">

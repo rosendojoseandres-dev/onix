@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Menu, Search, X } from 'lucide-react';
 import Link from 'next/link';
@@ -48,7 +48,21 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const { totalItems } = useCart();
+  const prevTotalItemsRef = useRef(totalItems);
+
+  useEffect(() => {
+    if (totalItems > prevTotalItemsRef.current) {
+      setShowToast(true);
+      const timer = setTimeout(() => {
+        setShowToast(false);
+      }, 2000);
+      prevTotalItemsRef.current = totalItems;
+      return () => clearTimeout(timer);
+    }
+    prevTotalItemsRef.current = totalItems;
+  }, [totalItems]);
 
   const handleLinkClick = () => {
     setIsMobileMenuOpen(false);
@@ -101,7 +115,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center gap-3 sm:gap-4 relative">
           <button
             className="text-white/70 hover:text-white transition-colors"
             aria-label="Buscar"
@@ -132,6 +146,24 @@ export default function Navbar() {
               </motion.span>
             </AnimatePresence>
           </button>
+
+          {/* Added to Bag Toast */}
+          <AnimatePresence>
+            {showToast && (
+              <motion.div
+                initial={{ opacity: 0, y: -20, scale: 0.95, filter: 'blur(4px)' }}
+                animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, y: -10, scale: 0.95, filter: 'blur(4px)' }}
+                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                className="absolute top-full right-0 mt-6 px-4 py-3 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl flex items-center gap-3 w-max z-50 pointer-events-none"
+              >
+                <div className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center shrink-0 shadow-inner">
+                  <ShoppingBag size={16} />
+                </div>
+                <span className="text-sm font-medium text-white pr-2">Tu producto se añadió a la bolsa</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.nav>
 

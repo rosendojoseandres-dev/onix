@@ -23,7 +23,7 @@ export default function ProductGrid() {
             viewport={{ once: true }}
           >
             <Link href="/catalogo" className="text-sm font-semibold text-zinc-400 hover:text-white transition-colors">
-              Ver todo el catálogo &rarr;
+              Ver catálogo &rarr;
             </Link>
           </motion.div>
         </div>

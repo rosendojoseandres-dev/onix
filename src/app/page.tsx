@@ -22,13 +22,12 @@ export default function Home() {
         <EarbudShowcase>
           <div className="text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-4 text-[#f4f4f4]">
-              Importamos lo Mejor del Mundo.
+              Selección Global.
               <br className="hidden md:block" />
-              Lo entregas tú recibes.
+              Entrega Impecable.
             </h1>
             <p className="text-zinc-400 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto">
-              Tecnología, calzado y moda de primera. Distribución directa al mayor y detal
-              en Colombia y Venezuela con garantía de excelencia.
+              El ecosistema definitivo de tecnología, moda y calzado. Importación y distribución directa al mayor y detal para Venezuela y Colombia.
             </p>
           </div>
         </EarbudShowcase>

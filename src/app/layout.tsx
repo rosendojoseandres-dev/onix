@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${manrope.variable} h-full antialiased dark`}
+      className={`${outfit.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-black text-white selection:bg-zinc-800 overflow-x-hidden">
         <Providers>{children}</Providers>

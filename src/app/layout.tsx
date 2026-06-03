@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
-
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "ONIX | Importación Premium de Artículos",
@@ -22,7 +16,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${outfit.variable} h-full antialiased dark`}
+      className="h-full antialiased dark"
     >
       <body className="min-h-full flex flex-col bg-black text-white selection:bg-zinc-800 overflow-x-hidden">
         <Providers>{children}</Providers>

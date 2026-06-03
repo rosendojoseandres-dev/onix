@@ -88,8 +88,8 @@ export default function Navbar() {
           >
             <Menu size={24} />
           </button>
-          <Link href="/" className="flex items-center -my-4 sm:-my-8">
-            <img src="/onix.svg" alt="Onix Logo" className="h-16 sm:h-24 w-auto object-contain" />
+          <Link href="/" className="flex items-center">
+            <img src="/onix.svg" alt="Onix Logo" className="h-8 sm:h-10 w-auto object-contain" />
           </Link>
         </div>
 
@@ -159,7 +159,7 @@ export default function Navbar() {
             >
               {/* Header — logo left, close button right */}
               <div className="flex items-center justify-between px-5 sm:px-6 py-5 border-b border-white/[0.06] shrink-0">
-                <img src="/onix.svg" alt="Onix Logo" className="h-10 w-auto object-contain" />
+                <img src="/onix.svg" alt="Onix Logo" className="h-8 w-auto object-contain" />
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.08] transition-all"

@@ -258,7 +258,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
             {/* Header */}
             <div className="flex items-center justify-between px-5 sm:px-6 py-5 border-b border-white/[0.06] shrink-0">
               <div className="flex items-center gap-3">
-                <h2 className="text-lg font-bold text-[#f4f4f4]">Tu Carrito</h2>
+                <h2 className="text-lg font-semibold text-[#f4f4f4]">Tu Carrito</h2>
                 {totalItems > 0 && (
                   <motion.span
                     key={totalItems}

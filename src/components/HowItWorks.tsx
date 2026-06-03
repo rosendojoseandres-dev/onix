@@ -29,7 +29,7 @@ function BentoSteps() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-6"
+          className="text-3xl sm:text-4xl font-semibold tracking-tight text-white mb-6"
         >
           ¿Cómo Funciona?
         </motion.h2>
@@ -57,7 +57,7 @@ function BentoSteps() {
           <ShoppingCart className="absolute -right-12 -bottom-12 text-cyan-500/[0.05] w-72 h-72 group-hover:scale-105 group-hover:text-cyan-500/[0.08] transition-all duration-700 pointer-events-none" />
           <div className="relative z-10">
             <span className="inline-block px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/10 text-cyan-400 text-xs font-bold uppercase tracking-widest mb-6 shadow-[0_0_15px_rgba(6,182,212,0.15)]">Paso 01</span>
-            <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">Elige tus Productos</h3>
+            <h3 className="text-3xl sm:text-4xl font-semibold text-white mb-4">Elige tus Productos</h3>
             <p className="text-zinc-400 text-base sm:text-lg max-w-md leading-relaxed">
               Explora nuestro catálogo de artículos importados: tecnología de última generación, moda y más. Todo a precios extremadamente competitivos.
             </p>
@@ -75,7 +75,7 @@ function BentoSteps() {
           <Globe className="absolute -right-8 -bottom-8 text-indigo-500/[0.05] w-56 h-56 group-hover:scale-105 group-hover:text-indigo-500/[0.08] transition-all duration-700 pointer-events-none" />
           <div className="relative z-10">
             <span className="inline-block px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-6 shadow-[0_0_15px_rgba(99,102,241,0.15)]">Paso 02</span>
-            <h3 className="text-3xl font-bold text-white mb-4">Procesamos tu Pedido</h3>
+            <h3 className="text-3xl font-semibold text-white mb-4">Procesamos tu Pedido</h3>
             <p className="text-zinc-400 text-base sm:text-lg leading-relaxed">
               Gestionamos la importación directa desde nuestros proveedores internacionales garantizando calidad premium.
             </p>
@@ -94,7 +94,7 @@ function BentoSteps() {
           
           <div className="relative z-10 w-full md:w-1/2">
             <span className="inline-block px-4 py-2 rounded-full border border-violet-500/20 bg-violet-500/10 text-violet-400 text-xs font-bold uppercase tracking-widest mb-6 shadow-[0_0_15px_rgba(139,92,246,0.15)]">Paso 03</span>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">Elige Cómo Recibirlo</h3>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 tracking-tight">Elige Cómo Recibirlo</h3>
             <p className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-lg">
               Dos opciones diseñadas a tu medida: recoge tus productos en un casillero en EE. UU. o recíbelos cómodamente en la puerta de tu casa.
             </p>
@@ -153,7 +153,7 @@ function CinematicModalities() {
                 <div className="h-px w-12 bg-cyan-500/30" />
               </div>
 
-              <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tighter leading-[1.05]">
+              <h2 className="text-5xl sm:text-6xl font-semibold text-white mb-6 tracking-tighter leading-[1.05]">
                 Casillero en<br />Estados Unidos
               </h2>
 
@@ -208,7 +208,7 @@ function CinematicModalities() {
                 <div className="h-px w-12 bg-indigo-500/30" />
               </div>
 
-              <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tighter leading-[1.05]">
+              <h2 className="text-5xl sm:text-6xl font-semibold text-white mb-6 tracking-tighter leading-[1.05]">
                 Entrega<br />Puerta a Puerta
               </h2>
 

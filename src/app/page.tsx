@@ -21,7 +21,7 @@ export default function Home() {
         {/* Flagship product demo (Full width to allow light animations) */}
         <EarbudShowcase>
           <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-[#f4f4f4]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-4 text-[#f4f4f4]">
               Importamos lo Mejor del Mundo.
               <br className="hidden md:block" />
               Lo entregas tú recibes.

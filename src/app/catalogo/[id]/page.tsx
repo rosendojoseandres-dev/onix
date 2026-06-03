@@ -98,7 +98,7 @@ export default function ProductDetailPage() {
             >
               <div className="mb-6">
                 <p className="text-sm font-medium text-zinc-400 uppercase tracking-widest mb-2">{product.category}</p>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#f4f4f4] mb-4">{product.name}</h1>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#f4f4f4] mb-4">{product.name}</h1>
                 
                 <div className="flex items-center gap-4">
                   <span className="text-3xl font-bold text-white">${product.price.toLocaleString()}</span>

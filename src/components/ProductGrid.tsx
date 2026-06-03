@@ -13,7 +13,7 @@ export default function ProductGrid() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl font-bold text-white tracking-tight"
+            className="text-3xl sm:text-4xl font-semibold text-white tracking-tight"
           >
             Nuevas Adiciones
           </motion.h2>

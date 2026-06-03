@@ -42,7 +42,7 @@ export default function PromoShowcase() {
               <div className="h-px w-16 bg-amber-500/30" />
             </div>
 
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tighter leading-[1.05]">
+            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-semibold text-white mb-6 tracking-tighter leading-[1.05]">
               Apple Watch<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500 drop-shadow-[0_0_15px_rgba(245,158,11,0.15)]">
                 Ultra 2

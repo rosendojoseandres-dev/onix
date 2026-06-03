@@ -203,11 +203,11 @@ const ProductDetails = ({ data, isLeft }: { data: ProductData; isLeft: boolean }
       exit="exit"
       className={`flex flex-col ${alignClass}`}
     >
-      <motion.h2 variants={ANIMATIONS.item} className="text-sm font-bold uppercase tracking-[0.2em] text-zinc-500 mb-2">
+      <motion.h2 variants={ANIMATIONS.item} className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-2">
         {data.label} Earbud
       </motion.h2>
 
-      <motion.h1 variants={ANIMATIONS.item} className="text-4xl md:text-5xl font-bold tracking-tight mb-2 text-[#f4f4f4]">
+      <motion.h1 variants={ANIMATIONS.item} className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-[#f4f4f4]">
         {data.title}
       </motion.h1>
 

@@ -11,8 +11,7 @@ import CartDrawer from './CartDrawer';
 const NAV_LINKS = [
   { href: '/', label: 'Inicio' },
   { href: '/catalogo', label: 'Catálogo' },
-  { href: '#contacto', label: 'Contacto' },
-  { href: '#como-funciona', label: 'Como Funciona' },
+  { href: '/contacto', label: 'Contacto' },
 ];
 
 const menuOverlay = {

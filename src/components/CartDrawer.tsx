@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Minus, Plus, Trash2, ShoppingBag, ArrowRight, Package } from 'lucide-react';
 import { useCart } from '@/store/cart-context';
@@ -211,6 +212,7 @@ interface CartDrawerProps {
 
 export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
   const { items, totalItems, totalPrice, updateQuantity, removeItem, clearCart } = useCart();
+  const router = useRouter();
 
   // Close on Escape
   useEffect(() => {
@@ -340,6 +342,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() => { onClose(); router.push('/checkout'); }}
                   className="w-full py-4 rounded-xl bg-white text-black font-semibold text-base flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:shadow-white/10 transition-shadow"
                 >
                   Continuar Compra

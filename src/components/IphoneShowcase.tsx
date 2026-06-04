@@ -11,8 +11,8 @@ export default function IphoneShowcase() {
       {/* Immersive Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=2500&auto=format&fit=crop"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          src="/iphone14promax.png"
+          className="absolute inset-0 w-full h-full object-contain object-center opacity-80 md:opacity-100 scale-90 md:scale-100"
           alt="iPhone 14 Pro Max"
         />
         

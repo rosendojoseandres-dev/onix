@@ -6,16 +6,39 @@ import Link from 'next/link';
 
 export default function PromoShowcase() {
   return (
-    <section className="relative w-full min-h-[70vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden bg-black">
       
-      {/* Background gradients for depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-amber-950/10 to-black pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.05)_0%,transparent_50%)] pointer-events-none" />
+      {/* 1. Atmospheric Ambient Glow (Blurred Background) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <img 
+          src="/applewatch.png"
+          className="absolute inset-0 w-full h-full object-cover opacity-30 blur-[80px] scale-110 transform-gpu"
+          alt=""
+        />
+        {/* Subtle color tint to unify the glow */}
+        <div className="absolute inset-0 bg-amber-950/20 mix-blend-color" />
+      </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4 items-center">
+      {/* 2. Main Product Image (Sharp, uncropped, edges feathered) */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none px-4">
+        <div className="relative w-full max-w-5xl h-full flex items-center justify-center">
+          <img 
+            src="/applewatch.png"
+            className="w-full h-full object-contain mix-blend-lighten opacity-100 drop-shadow-2xl"
+            style={{
+              maskImage: 'radial-gradient(ellipse 95% 95% at 50% 50%, black 50%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 95% 95% at 50% 50%, black 50%, transparent 100%)'
+            }}
+            alt="Apple Watch Ultra 2"
+          />
+        </div>
+      </div>
+
+      {/* 3. Text and Specs Overlay */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-24 flex flex-col lg:flex-row justify-between items-center gap-12 lg:gap-4 pointer-events-none h-full">
         
         {/* Left Column: Text Content */}
-        <div className="w-full flex flex-col items-center lg:items-start text-center lg:text-left order-3 lg:order-1">
+        <div className="w-full lg:w-1/3 flex flex-col items-center lg:items-start text-center lg:text-left pointer-events-auto">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -58,23 +81,8 @@ export default function PromoShowcase() {
           </motion.div>
         </div>
 
-        {/* Center Column: Product Image */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, type: 'spring' }}
-          viewport={{ once: true }}
-          className="w-full flex justify-center items-center order-1 lg:order-2 relative z-20"
-        >
-          <img 
-            src="/applewatch.png" 
-            alt="Apple Watch Ultra 2" 
-            className="w-full max-w-[280px] sm:max-w-sm lg:max-w-[450px] object-contain mix-blend-lighten drop-shadow-2xl"
-          />
-        </motion.div>
-
         {/* Right Column: Specs on Desktop */}
-        <div className="hidden lg:flex flex-col gap-6 items-end justify-center order-2 lg:order-3">
+        <div className="hidden lg:flex w-full lg:w-1/3 flex-col gap-6 items-end justify-center pointer-events-auto">
            <motion.div 
              initial={{ opacity: 0, x: 30 }}
              whileInView={{ opacity: 1, x: 0 }}

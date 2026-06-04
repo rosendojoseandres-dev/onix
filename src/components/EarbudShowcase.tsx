@@ -112,20 +112,22 @@ const ANIMATIONS: any = {
   image: (isLeft: boolean): Variants => ({
     initial: {
       opacity: 0,
-      filter: 'blur(15px)',
-      x: isLeft ? -40 : 40,
+      scale: 0.95,
+      filter: 'blur(10px)',
+      y: 20,
     },
     animate: {
       opacity: 1,
+      scale: 1,
       filter: 'blur(0px)',
-      x: 0,
-      transition: { type: 'spring', stiffness: 200, damping: 25 },
+      y: 0,
+      transition: { type: 'spring', stiffness: 120, damping: 20 },
     },
     exit: {
       opacity: 0,
-      filter: 'blur(15px)',
-      x: isLeft ? 40 : -40,
-      transition: { duration: 0.25 },
+      scale: 1.05,
+      filter: 'blur(10px)',
+      transition: { duration: 0.3 },
     },
   }),
 };
@@ -165,7 +167,7 @@ const ProductVisual = ({ data, isLeft }: { data: ProductData; isLeft: boolean })
     {/* Image Container */}
     <div className="relative h-64 w-64 sm:h-80 sm:w-80 md:h-[450px] md:w-[450px] rounded-full border border-white/5 shadow-2xl flex items-center justify-center overflow-hidden bg-black/20 backdrop-blur-sm">
       <motion.div
-        animate={{ y: [-10, 10, -10] }}
+        animate={{ y: [-5, 5, -5] }}
         transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
         className="relative z-10 w-full h-full flex items-center justify-center"
       >
@@ -282,8 +284,12 @@ export default function EarbudShowcase({ children }: { children?: React.ReactNod
           </div>
         )}
 
-        <div
-          className={`flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-12 md:gap-24 lg:gap-48 w-full`}
+        <motion.div
+          layout
+          transition={{ type: 'spring', bounce: 0, duration: 0.9 }}
+          className={`flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-12 md:gap-24 lg:gap-48 w-full ${
+            isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
+          }`}
         >
           {/* Left Column: Visuals */}
           <ProductVisual data={currentData} isLeft={isLeft} />
@@ -298,7 +304,7 @@ export default function EarbudShowcase({ children }: { children?: React.ReactNod
               />
             </AnimatePresence>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

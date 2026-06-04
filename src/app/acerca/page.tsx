@@ -11,6 +11,11 @@ import {
   Headphones,
   MapPin,
   ArrowRight,
+  Briefcase,
+  Package,
+  MessageCircle,
+  Map,
+  Rocket
 } from 'lucide-react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
@@ -77,19 +82,19 @@ const TEAM = [
   {
     name: 'Andrés Rosendo',
     role: 'Fundador & CEO',
-    emoji: '👨‍💼',
+    icon: Briefcase,
     bio: 'Con más de 5 años en importación y logística internacional, Andrés creó ONIX para democratizar el acceso a productos premium en Latinoamérica.',
   },
   {
     name: 'Equipo de Logística',
     role: 'Operaciones & Envíos',
-    emoji: '📦',
+    icon: Package,
     bio: 'Coordinamos con operadores en Miami, Bogotá y Caracas para garantizar que tu pedido llegue en perfecto estado y a tiempo.',
   },
   {
     name: 'Soporte al Cliente',
     role: 'Atención 7/7',
-    emoji: '💬',
+    icon: MessageCircle,
     bio: 'Disponibles por WhatsApp, correo y formulario de contacto. Respondemos en menos de 24 horas, siempre.',
   },
 ];
@@ -212,10 +217,10 @@ export default function AcercaDePage() {
             <motion.div {...fadeUp(0.12)} className="relative">
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { emoji: '🇺🇸', label: 'Miami, USA', sub: 'Centro de operaciones' },
-                  { emoji: '🇨🇴', label: 'Colombia', sub: 'Entregas a todo el país' },
-                  { emoji: '🇻🇪', label: 'Venezuela', sub: 'Entregas a todo el país' },
-                  { emoji: '📦', label: '+500 pedidos', sub: 'Completados con éxito' },
+                  { icon: Map, label: 'Miami, USA', sub: 'Centro de operaciones' },
+                  { icon: MapPin, label: 'Colombia', sub: 'Entregas a todo el país' },
+                  { icon: MapPin, label: 'Venezuela', sub: 'Entregas a todo el país' },
+                  { icon: PackageCheck, label: '+500 pedidos', sub: 'Completados con éxito' },
                 ].map((item, i) => (
                   <motion.div
                     key={item.label}
@@ -225,7 +230,7 @@ export default function AcercaDePage() {
                     transition={{ delay: 0.1 * i, duration: 0.5 }}
                     className="bg-zinc-900/50 border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] transition-colors duration-300"
                   >
-                    <span className="text-3xl">{item.emoji}</span>
+                    <item.icon size={28} className="text-zinc-400" />
                     <p className="text-sm font-semibold text-[#f4f4f4] mt-3 mb-0.5">{item.label}</p>
                     <p className="text-xs text-zinc-500">{item.sub}</p>
                   </motion.div>
@@ -310,8 +315,8 @@ export default function AcercaDePage() {
                 {...fadeUp(0.08 * i)}
                 className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 text-center hover:border-white/[0.12] hover:bg-zinc-900/60 transition-all duration-300"
               >
-                <div className="w-16 h-16 rounded-full bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mx-auto mb-4 text-3xl">
-                  {member.emoji}
+                <div className="w-16 h-16 rounded-full bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mx-auto mb-4 text-zinc-400">
+                  <member.icon size={24} />
                 </div>
                 <p className="text-base font-semibold text-[#f4f4f4] mb-0.5">{member.name}</p>
                 <p className="text-[11px] font-medium uppercase tracking-widest text-zinc-600 mb-3">
@@ -339,12 +344,12 @@ export default function AcercaDePage() {
                 </h2>
                 <div className="space-y-4">
                   {[
-                    { flag: '🇺🇸', city: 'Miami, Florida', detail: 'Bodega y centro de consolidación de envíos' },
-                    { flag: '🇨🇴', city: 'Bogotá, Colombia', detail: 'Operaciones y distribución local' },
-                    { flag: '🇻🇪', city: 'Caracas, Venezuela', detail: 'Operaciones y distribución local' },
+                    { icon: Map, city: 'Miami, Florida', detail: 'Bodega y centro de consolidación de envíos' },
+                    { icon: MapPin, city: 'Bogotá, Colombia', detail: 'Operaciones y distribución local' },
+                    { icon: MapPin, city: 'Caracas, Venezuela', detail: 'Operaciones y distribución local' },
                   ].map((loc) => (
                     <div key={loc.city} className="flex items-start gap-3">
-                      <span className="text-xl mt-0.5">{loc.flag}</span>
+                      <loc.icon size={20} className="text-zinc-400 mt-0.5 shrink-0" />
                       <div>
                         <p className="text-sm font-semibold text-[#f4f4f4]">{loc.city}</p>
                         <p className="text-xs text-zinc-500">{loc.detail}</p>
@@ -386,7 +391,9 @@ export default function AcercaDePage() {
             {/* Glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[150px] bg-white/[0.04] blur-[80px] pointer-events-none rounded-full" />
             <div className="relative">
-              <p className="text-4xl mb-4">🚀</p>
+              <div className="mx-auto w-16 h-16 rounded-full bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mb-6 text-zinc-400">
+                <Rocket size={32} />
+              </div>
               <h2 className="text-2xl sm:text-3xl font-semibold text-[#f4f4f4] mb-3">
                 ¿Listo para comprar?
               </h2>

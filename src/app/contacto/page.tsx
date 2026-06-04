@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Mail, Phone, MessageSquare, Send, CheckCircle, Clock, Globe, ChevronDown } from 'lucide-react';
+import { MapPin, Mail, Phone, MessageSquare, Send, CheckCircle, Clock, Globe, ChevronDown, Map } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollBackground from '@/components/ScrollBackground';
@@ -65,19 +65,19 @@ const OFFICES = [
     country: 'Colombia',
     city: 'Bogotá',
     detail: 'Envíos a todo el país',
-    flag: '🇨🇴',
+    icon: MapPin,
   },
   {
     country: 'Venezuela',
     city: 'Caracas',
     detail: 'Envíos a todo el país',
-    flag: '🇻🇪',
+    icon: MapPin,
   },
   {
     country: 'Casillero USA',
     city: 'Miami, FL',
     detail: 'Dirección para tus compras',
-    flag: '🇺🇸',
+    icon: Map,
   },
 ];
 
@@ -403,7 +403,7 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   {OFFICES.map((office) => (
                     <div key={office.country} className="flex items-start gap-3">
-                      <span className="text-xl leading-none mt-0.5">{office.flag}</span>
+                      <office.icon size={20} className="text-zinc-400 mt-0.5 shrink-0" />
                       <div>
                         <p className="text-sm font-semibold text-[#f4f4f4]">
                           {office.city}, {office.country}

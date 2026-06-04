@@ -49,8 +49,8 @@ const PAYMENT_METHODS: { value: PaymentMethod; label: string; detail: string; ic
 ];
 
 const COUNTRIES = [
-  { value: 'colombia', label: '🇨🇴 Colombia' },
-  { value: 'venezuela', label: '🇻🇪 Venezuela' },
+  { value: 'colombia', label: 'Colombia' },
+  { value: 'venezuela', label: 'Venezuela' },
 ];
 
 // =========================================

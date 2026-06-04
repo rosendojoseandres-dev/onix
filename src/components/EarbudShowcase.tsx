@@ -51,7 +51,7 @@ const PRODUCT_DATA: Record<ProductId, ProductData> = {
     title: 'X-Stream Charge',
     description:
       'La tecnología X-Stream carga la DELTA 2 de 0% a 80% en tan solo 50 minutos. El sistema de carga más rápido disponible en una estación portátil de su clase.',
-    image: '/images/ecoflow-delta2.png',
+    image: 'https://ik.imagekit.io/kqmrslzuq/SOUND/left-earbud.png',
     colors: {
       gradient: 'from-blue-600 to-indigo-900',
       glow: 'bg-blue-500',
@@ -69,7 +69,7 @@ const PRODUCT_DATA: Record<ProductId, ProductData> = {
     title: 'Solar Unlimited',
     description:
       'Compatible con paneles solares de hasta 500 W. Alimenta prácticamente cualquier dispositivo con 1800 W de potencia AC y 15 puertos de carga simultánea.',
-    image: '/images/ecoflow-delta2.png',
+    image: '/planta.png',
     colors: {
       gradient: 'from-emerald-600 to-teal-900',
       glow: 'bg-emerald-500',
@@ -182,7 +182,11 @@ const ProductVisual = ({ data, isLeft }: { data: ProductData; isLeft: boolean })
             initial="initial"
             animate="animate"
             exit="exit"
-            className="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-4"
+            className={`w-full h-full object-contain p-4 ${
+              !isLeft
+                ? 'drop-shadow-[0_30px_40px_rgba(0,0,0,0.85)] brightness-[0.8] contrast-[1.15]'
+                : 'drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]'
+            }`}
             draggable={false}
           />
         </AnimatePresence>

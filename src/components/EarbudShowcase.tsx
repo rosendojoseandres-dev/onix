@@ -65,10 +65,10 @@ const PRODUCT_DATA: Record<ProductId, ProductData> = {
   },
   right: {
     id: 'right',
-    label: 'Energía Solar',
-    title: 'Solar Unlimited',
+    label: 'Estación de Energía',
+    title: 'EcoFlow DELTA 2',
     description:
-      'Compatible con paneles solares de hasta 500 W. Alimenta prácticamente cualquier dispositivo con 1800 W de potencia AC y 15 puertos de carga simultánea.',
+      'Capacidad de 1024 Wh expandible. Alimenta prácticamente cualquier dispositivo con 1800 W de potencia AC y 15 puertos. Carga ultrarrápida de 0 a 80% en 50 min.',
     image: '/planta.png',
     colors: {
       gradient: 'from-emerald-600 to-teal-900',
@@ -182,10 +182,10 @@ const ProductVisual = ({ data, isLeft }: { data: ProductData; isLeft: boolean })
             initial="initial"
             animate="animate"
             exit="exit"
-            className={`w-full h-full object-contain p-4 ${
+            className={`object-contain transition-all duration-500 ${
               !isLeft
-                ? 'drop-shadow-[0_30px_40px_rgba(0,0,0,0.85)] brightness-[0.8] contrast-[1.15]'
-                : 'drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]'
+                ? 'w-[70%] h-[70%] drop-shadow-[0_30px_35px_rgba(0,0,0,0.95)] brightness-[0.85] contrast-[1.1] p-2'
+                : 'w-full h-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-4'
             }`}
             draggable={false}
           />

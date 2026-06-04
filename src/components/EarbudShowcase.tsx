@@ -112,23 +112,19 @@ const ANIMATIONS: any = {
   image: (isLeft: boolean): Variants => ({
     initial: {
       opacity: 0,
-      scale: 1.5,
       filter: 'blur(15px)',
-      rotate: isLeft ? -30 : 30,
-      x: isLeft ? -80 : 80,
+      x: isLeft ? -40 : 40,
     },
     animate: {
       opacity: 1,
-      scale: 1,
       filter: 'blur(0px)',
-      rotate: 0,
       x: 0,
-      transition: { type: 'spring', stiffness: 260, damping: 20 },
+      transition: { type: 'spring', stiffness: 200, damping: 25 },
     },
     exit: {
       opacity: 0,
-      scale: 0.6,
-      filter: 'blur(20px)',
+      filter: 'blur(15px)',
+      x: isLeft ? 40 : -40,
       transition: { duration: 0.25 },
     },
   }),
@@ -286,12 +282,8 @@ export default function EarbudShowcase({ children }: { children?: React.ReactNod
           </div>
         )}
 
-        <motion.div
-          layout
-          transition={{ type: 'spring', bounce: 0, duration: 0.9 }}
-          className={`flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-12 md:gap-24 lg:gap-48 w-full ${
-            isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
-          }`}
+        <div
+          className={`flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-12 md:gap-24 lg:gap-48 w-full`}
         >
           {/* Left Column: Visuals */}
           <ProductVisual data={currentData} isLeft={isLeft} />
@@ -306,7 +298,7 @@ export default function EarbudShowcase({ children }: { children?: React.ReactNod
               />
             </AnimatePresence>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

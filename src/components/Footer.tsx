@@ -55,7 +55,6 @@ export default function Footer() {
             <ul className="space-y-4">
               <FooterLink href="#catalogo">Catálogo de Productos</FooterLink>
               <FooterLink href="#como-funciona">Cómo Funciona</FooterLink>
-              <FooterLink href="#casillero">Casillero en USA</FooterLink>
               <FooterLink href="/contacto">Contacto</FooterLink>
             </ul>
           </div>

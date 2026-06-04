@@ -11,7 +11,7 @@ import ScrollBackground from '@/components/ScrollBackground';
 // TYPES
 // =========================================
 
-type InquiryType = 'compra' | 'envio' | 'casillero' | 'devolucion' | 'otro';
+type InquiryType = 'compra' | 'envio' | 'devolucion' | 'otro';
 
 interface FormState {
   name: string;
@@ -28,7 +28,6 @@ interface FormState {
 const INQUIRY_TYPES: { value: InquiryType; label: string }[] = [
   { value: 'compra', label: 'Información de compra' },
   { value: 'envio', label: 'Estado de envío / entrega' },
-  { value: 'casillero', label: 'Servicio de casillero en USA' },
   { value: 'devolucion', label: 'Devoluciones / garantía' },
   { value: 'otro', label: 'Otra consulta' },
 ];
@@ -72,12 +71,6 @@ const OFFICES = [
     city: 'Caracas',
     detail: 'Envíos a todo el país',
     icon: MapPin,
-  },
-  {
-    country: 'Casillero USA',
-    city: 'Miami, FL',
-    detail: 'Dirección para tus compras',
-    icon: Map,
   },
 ];
 
@@ -170,7 +163,7 @@ export default function ContactPage() {
               transition={{ duration: 0.7, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
               className="text-zinc-400 text-base sm:text-lg max-w-xl mx-auto"
             >
-              Resuelve tus dudas sobre importación, envíos, casillero o cualquier producto. 
+              Resuelve tus dudas sobre importación, envíos o cualquier producto. 
               Respondemos en menos de 24 horas.
             </motion.p>
           </div>

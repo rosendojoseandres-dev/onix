@@ -11,7 +11,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "ONIX | Importación Premium de Artículos",
   description:
-    "Importamos artículos electrónicos, hogar y moda a precios por debajo de mercado. Casillero en USA con asesoría gratis o entrega puerta a puerta en Colombia y Venezuela.",
+    "Importamos artículos electrónicos, hogar y moda a precios por debajo de mercado. Entrega puerta a puerta en Colombia y Venezuela.",
 };
 
 export default function RootLayout({

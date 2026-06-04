@@ -14,6 +14,7 @@ import {
   Briefcase,
   Package,
   MessageCircle,
+  MessageSquare,
   Map,
   Rocket
 } from 'lucide-react';
@@ -62,7 +63,7 @@ const VALUES = [
     icon: Zap,
     title: 'Precios Imbatibles',
     description:
-      'Al importar directamente desde USA, eliminamos los intermediarios y te ofrecemos precios muy por debajo del mercado local.',
+      'Al importar directamente, eliminamos los intermediarios y te ofrecemos precios muy por debajo del mercado local.',
   },
   {
     icon: Headphones,
@@ -89,7 +90,7 @@ const TEAM = [
     name: 'Equipo de Logística',
     role: 'Operaciones & Envíos',
     icon: Package,
-    bio: 'Coordinamos con operadores en Miami, Bogotá y Caracas para garantizar que tu pedido llegue en perfecto estado y a tiempo.',
+    bio: 'Coordinamos con operadores en Bogotá y Caracas para garantizar que tu pedido llegue en perfecto estado y a tiempo.',
   },
   {
     name: 'Soporte al Cliente',
@@ -108,7 +109,7 @@ const HOW_WE_WORK = [
   {
     step: '02',
     title: 'Confirmamos disponibilidad',
-    description: 'Verificamos stock en USA y te enviamos el precio final con envío incluido, sin sorpresas.',
+    description: 'Verificamos stock con nuestros proveedores y te enviamos el precio final con envío incluido, sin sorpresas.',
   },
   {
     step: '03',
@@ -118,7 +119,7 @@ const HOW_WE_WORK = [
   {
     step: '04',
     title: 'Recibas en tu puerta',
-    description: 'Tu pedido viaja desde Miami y llega a tu ciudad. Seguimiento en tiempo real por WhatsApp.',
+    description: 'Tu pedido llega a tu ciudad en Colombia o Venezuela. Seguimiento en tiempo real por WhatsApp.',
   },
 ];
 
@@ -142,7 +143,7 @@ export default function AcercaDePage() {
             <motion.div {...fadeUp(0)}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-zinc-400 text-xs font-medium tracking-widest uppercase mb-6">
                 <Globe size={12} />
-                Importación directa desde USA
+                Importación directa
               </span>
             </motion.div>
 
@@ -202,8 +203,7 @@ export default function AcercaDePage() {
                   compra confusos o poco transparentes.
                 </p>
                 <p>
-                  Decidimos cambiar eso. Establecimos conexiones directas con proveedores en
-                  Miami, construimos un sistema de logística propio y creamos ONIX — una tienda
+                  Decidimos cambiar eso. Establecimos conexiones directas con proveedores, construimos un sistema de logística propio y creamos ONIX — una tienda
                   donde comprar en el exterior es tan fácil como escribir un mensaje de WhatsApp.
                 </p>
                 <p>
@@ -217,7 +217,7 @@ export default function AcercaDePage() {
             <motion.div {...fadeUp(0.12)} className="relative">
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { icon: Map, label: 'Miami, USA', sub: 'Centro de operaciones' },
+                  { icon: PackageCheck, label: 'Productos Originales', sub: 'Calidad garantizada' },
                   { icon: MapPin, label: 'Colombia', sub: 'Entregas a todo el país' },
                   { icon: MapPin, label: 'Venezuela', sub: 'Entregas a todo el país' },
                   { icon: PackageCheck, label: '+500 pedidos', sub: 'Completados con éxito' },
@@ -340,11 +340,10 @@ export default function AcercaDePage() {
                   Dónde encontrarnos
                 </p>
                 <h2 className="text-3xl font-light text-[#f4f4f4] mb-4">
-                  Presencia en tres países
+                  Presencia en dos países
                 </h2>
                 <div className="space-y-4">
                   {[
-                    { icon: Map, city: 'Miami, Florida', detail: 'Bodega y centro de consolidación de envíos' },
                     { icon: MapPin, city: 'Bogotá, Colombia', detail: 'Operaciones y distribución local' },
                     { icon: MapPin, city: 'Caracas, Venezuela', detail: 'Operaciones y distribución local' },
                   ].map((loc) => (
@@ -359,24 +358,29 @@ export default function AcercaDePage() {
                 </div>
               </div>
               <div className="flex flex-col gap-3">
-                <div className="bg-zinc-800/60 border border-white/[0.06] rounded-2xl p-5">
-                  <MapPin size={18} className="text-zinc-500 mb-3" />
-                  <p className="text-sm font-medium text-[#f4f4f4] mb-1">
-                    ¿Quieres saber si hacemos envíos a tu ciudad?
-                  </p>
-                  <p className="text-xs text-zinc-500 mb-4">
-                    Escríbenos y te confirmamos en minutos.
-                  </p>
-                  <a
-                    href="https://wa.me/573001234567?text=Hola%2C%20quiero%20saber%20si%20hacen%20envíos%20a%20mi%20ciudad"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-semibold text-white hover:text-zinc-300 transition-colors"
+                <a
+                  href="https://wa.me/573001234567?text=Hola%2C%20quiero%20saber%20si%20hacen%20envíos%20a%20mi%20ciudad"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="rounded-3xl p-6 border border-emerald-500/20 bg-emerald-500/[0.05] hover:bg-emerald-500/[0.08] hover:border-emerald-500/30 transition-all duration-300 cursor-pointer"
                   >
-                    Preguntar por WhatsApp
-                    <ArrowRight size={13} />
-                  </a>
-                </div>
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-8 h-8 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                        <MessageSquare size={16} className="text-emerald-400" />
+                      </div>
+                      <span className="text-sm font-semibold text-emerald-400">
+                        Escríbenos por WhatsApp
+                      </span>
+                    </div>
+                    <p className="text-xs text-zinc-500">
+                      Respuesta inmediata en horario de atención. El canal más rápido para consultas urgentes.
+                    </p>
+                  </motion.div>
+                </a>
               </div>
             </div>
           </motion.div>

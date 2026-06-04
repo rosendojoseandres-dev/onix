@@ -27,20 +27,21 @@ import ScrollBackground from '@/components/ScrollBackground';
 // ANIMATION VARIANTS
 // =========================================
 
-const fadeUp = (delay = 0, isHero = false) => ({
-  initial: { opacity: 0, y: 20 },
-  ...(isHero
-    ? { animate: { opacity: 1, y: 0 } }
-    : { whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.1 } }),
-  transition: { duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
-});
+const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.1 },
+  },
+};
 
-const fadeIn = (delay = 0) => ({
-  initial: { opacity: 0 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true },
-  transition: { duration: 0.6, delay },
-});
+const fadeUpVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  },
+};
 
 // =========================================
 // DATA
@@ -140,8 +141,13 @@ export default function AcercaDePage() {
           {/* Ambient glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-white/[0.03] blur-[120px] pointer-events-none rounded-full" />
 
-          <div className="relative max-w-4xl mx-auto">
-            <motion.div {...fadeUp(0, true)}>
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            className="relative max-w-4xl mx-auto"
+          >
+            <motion.div variants={fadeUpVariant}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-zinc-400 text-xs font-medium tracking-widest uppercase mb-6">
                 <Globe size={12} />
                 Importación directa
@@ -149,7 +155,7 @@ export default function AcercaDePage() {
             </motion.div>
 
             <motion.h1
-              {...fadeUp(0.08, true)}
+              variants={fadeUpVariant}
               className="text-5xl sm:text-6xl md:text-7xl font-light tracking-tight text-[#f4f4f4] mb-6"
             >
               Somos{' '}
@@ -159,23 +165,29 @@ export default function AcercaDePage() {
             </motion.h1>
 
             <motion.p
-              {...fadeUp(0.16, true)}
+              variants={fadeUpVariant}
               className="text-zinc-400 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
             >
               Nacimos con una misión clara: acercar los mejores productos del mundo a Colombia y
               Venezuela, con precios justos, transparencia total y la confianza de un equipo que
               entiende lo que necesitas.
             </motion.p>
-          </div>
+          </motion.div>
         </section>
 
         {/* ── STATS ── */}
         <section className="px-4 pb-24 max-w-5xl mx-auto w-full">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          >
             {STATS.map((stat, i) => (
               <motion.div
                 key={stat.label}
-                {...fadeUp(0.06 * i)}
+                variants={fadeUpVariant}
                 className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 text-center hover:border-white/[0.12] transition-colors duration-300"
               >
                 <stat.icon size={20} className="text-zinc-500 mx-auto mb-3" />
@@ -183,13 +195,18 @@ export default function AcercaDePage() {
                 <p className="text-xs text-zinc-500">{stat.label}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
 
         {/* ── STORY ── */}
         <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeUp(0)}>
+            <motion.div 
+              variants={fadeUpVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+            >
               <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-4">
                 Nuestra historia
               </p>
@@ -215,7 +232,13 @@ export default function AcercaDePage() {
             </motion.div>
 
             {/* Visual accent */}
-            <motion.div {...fadeUp(0.12)} className="relative">
+            <motion.div 
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              className="relative"
+            >
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { icon: PackageCheck, label: 'Productos Originales', sub: 'Calidad garantizada' },
@@ -225,10 +248,7 @@ export default function AcercaDePage() {
                 ].map((item, i) => (
                   <motion.div
                     key={item.label}
-                    initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ delay: 0.1 * i, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    variants={fadeUpVariant}
                     className="bg-zinc-900/50 border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] transition-colors duration-300"
                   >
                     <item.icon size={28} className="text-zinc-400" />
@@ -243,7 +263,13 @@ export default function AcercaDePage() {
 
         {/* ── VALUES ── */}
         <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
-          <motion.div {...fadeUp(0)} className="text-center mb-12">
+          <motion.div 
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="text-center mb-12"
+          >
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
               Lo que nos define
             </p>
@@ -252,11 +278,17 @@ export default function AcercaDePage() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-5"
+          >
             {VALUES.map((val, i) => (
               <motion.div
                 key={val.title}
-                {...fadeUp(0.07 * i)}
+                variants={fadeUpVariant}
                 className="group bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 hover:border-white/[0.14] hover:bg-zinc-900/60 transition-all duration-300"
               >
                 <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mb-4 group-hover:bg-white/[0.08] transition-colors">
@@ -266,12 +298,18 @@ export default function AcercaDePage() {
                 <p className="text-sm text-zinc-500 leading-relaxed">{val.description}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
 
         {/* ── HOW WE WORK ── */}
         <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
-          <motion.div {...fadeUp(0)} className="text-center mb-12">
+          <motion.div 
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="text-center mb-12"
+          >
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
               El proceso
             </p>
@@ -280,11 +318,17 @@ export default function AcercaDePage() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          >
             {HOW_WE_WORK.map((item, i) => (
               <motion.div
                 key={item.step}
-                {...fadeUp(0.08 * i)}
+                variants={fadeUpVariant}
                 className="relative bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 hover:border-white/[0.12] transition-colors duration-300"
               >
                 {/* Step number */}
@@ -295,12 +339,18 @@ export default function AcercaDePage() {
                 <p className="text-xs text-zinc-500 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
 
         {/* ── TEAM ── */}
         <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
-          <motion.div {...fadeUp(0)} className="text-center mb-12">
+          <motion.div 
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="text-center mb-12"
+          >
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
               Quiénes somos
             </p>
@@ -309,11 +359,17 @@ export default function AcercaDePage() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-5"
+          >
             {TEAM.map((member, i) => (
               <motion.div
                 key={member.name}
-                {...fadeUp(0.08 * i)}
+                variants={fadeUpVariant}
                 className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 text-center hover:border-white/[0.12] hover:bg-zinc-900/60 transition-all duration-300"
               >
                 <div className="w-16 h-16 rounded-full bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mx-auto mb-4 text-zinc-400">
@@ -326,13 +382,16 @@ export default function AcercaDePage() {
                 <p className="text-xs text-zinc-500 leading-relaxed">{member.bio}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
 
         {/* ── LOCATIONS ── */}
         <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
           <motion.div
-            {...fadeUp(0)}
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
             className="bg-zinc-900/40 border border-white/[0.06] rounded-3xl p-8 sm:p-12"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -390,7 +449,10 @@ export default function AcercaDePage() {
         {/* ── CTA ── */}
         <section className="px-4 pb-32 max-w-3xl mx-auto w-full text-center">
           <motion.div
-            {...fadeUp(0)}
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
             className="relative bg-zinc-900/60 border border-white/[0.08] rounded-3xl p-10 sm:p-14 overflow-hidden"
           >
             {/* Glow */}

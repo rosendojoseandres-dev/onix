@@ -96,13 +96,13 @@ function BentoSteps() {
             <span className="inline-block px-4 py-2 rounded-full border border-violet-500/20 bg-violet-500/10 text-violet-400 text-xs font-bold uppercase tracking-widest mb-6 shadow-[0_0_15px_rgba(139,92,246,0.15)]">Paso 03</span>
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 tracking-tight">Elige Cómo Recibirlo</h3>
             <p className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-lg">
-              Nos encargamos de toda la logística de importación. Recibe tus productos cómodamente en la puerta de tu casa en Colombia o Venezuela.
+              Dos opciones diseñadas a tu medida: recoge tus productos en nuestras sedes o recíbelos cómodamente en la puerta de tu casa.
             </p>
           </div>
           
           <div className="relative z-10 w-full md:w-auto flex justify-end">
              <Link href="#modalidades" className="group flex items-center justify-center gap-3 bg-violet-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-violet-500 transition-all duration-300 w-full md:w-auto shadow-xl shadow-violet-500/20">
-                Ver Detalles
+                Ver Modalidades
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
              </Link>
           </div>
@@ -121,6 +121,60 @@ function CinematicModalities() {
   return (
     <div id="modalidades" className="w-full flex flex-col">
       
+      {/* Modality 1: Servicio Base */}
+      <section className="relative w-full min-h-[70vh] flex items-center justify-center overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2500&auto=format&fit=crop" 
+            className="absolute inset-0 w-full h-full object-cover opacity-50"
+            alt="Logistics Warehouse"
+          />
+          {/* Subtle Color Tint Overlay */}
+          <div className="absolute inset-0 bg-cyan-900/10 mix-blend-color" />
+          
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-transparent" />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 w-full max-w-[95%] mx-auto px-4 py-24 flex flex-col md:flex-row items-center">
+          <div className="w-full md:w-1/2">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-center gap-3 mb-8">
+                <Package className="text-cyan-400" size={24} />
+                <span className="text-cyan-400 text-xs sm:text-sm font-bold uppercase tracking-[0.25em]">Servicio Base</span>
+                <div className="h-px w-12 bg-cyan-500/30" />
+              </div>
+
+              <h2 className="text-5xl sm:text-6xl font-semibold text-white mb-6 tracking-tighter leading-[1.05]">
+                Recogida en<br />Nuestras Sedes
+              </h2>
+
+              <p className="text-zinc-300 text-lg sm:text-xl mb-10 max-w-lg leading-relaxed font-light">
+                Realizamos la importación directa y recibes tus productos en nuestras sedes de Bogotá o Caracas. Te brindamos asesoría completamente gratuita. La opción ideal para ahorrar en envíos nacionales.
+              </p>
+
+              <ul className="space-y-4 mb-8">
+                {['Asesoría gratuita incluida', 'Recepción segura en oficinas verificadas', 'Sin costos de envío nacional adicionales'].map((feature, idx) => (
+                  <motion.li key={idx} className="flex items-center gap-4">
+                    <div className="w-6 h-6 rounded-full bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(6,182,212,0.15)]">
+                      <CheckCircle2 size={14} className="text-cyan-400" />
+                    </div>
+                    <span className="text-zinc-200 font-medium text-base">{feature}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       <section className="relative w-full min-h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Background */}

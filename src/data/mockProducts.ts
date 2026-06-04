@@ -11,19 +11,6 @@ export interface Product {
 }
 
 export const MOCK_PRODUCTS: Product[] = [
-  {
-    id: '9',
-    name: 'EcoFlow DELTA 2',
-    category: 'Electrónica',
-    price: 300,
-    image: '/images/ecoflow-delta2.png',
-    isNew: true,
-    description: 'La EcoFlow DELTA 2 es una estación de energía portátil de 1024 Wh que proporciona seguridad energética para el hogar y alimenta prácticamente cualquier dispositivo. Recarga del 0% al 80% en tan solo 50 minutos gracias a la tecnología X-Stream. Con 1800 W de potencia de salida AC, 15 puertos de carga simultánea, compatible con paneles solares de hasta 500 W y batería LFP de larga duración. Ideal para apagones, campamentos, caravanas y uso domiciliario.',
-    variantTypes: [
-      { name: 'Combinación', options: ['Solo DELTA 2', 'DELTA 2 + Panel Solar 220W', 'DELTA 2 + Batería Extra'] },
-    ],
-    inStock: true,
-  },
   { 
     id: '1', 
     name: 'iPhone 15 Pro Max', 

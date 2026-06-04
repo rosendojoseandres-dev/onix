@@ -9,7 +9,7 @@ import ProductCard from '@/components/ProductCard';
 import { MOCK_PRODUCTS } from '@/data/mockProducts';
 import { Search, ChevronDown } from 'lucide-react';
 
-const CATEGORIES = ['Todos', 'Apple', 'Electrónica', 'Zapatos', 'Ropa'];
+const CATEGORIES = ['Todos', 'Apple', 'Zapatos', 'Ropa'];
 const SORT_OPTIONS = [
   { label: 'Destacados', value: 'featured' },
   { label: 'Precio: Menor a Mayor', value: 'price_asc' },

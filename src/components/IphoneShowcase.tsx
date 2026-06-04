@@ -14,7 +14,7 @@ export default function IphoneShowcase() {
         <motion.img 
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          src="https://images.unsplash.com/photo-1678652733527-31c34139e3f1?q=80&w=2500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=2500&auto=format&fit=crop"
           className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
           alt="iPhone 14 Pro Max"
         />

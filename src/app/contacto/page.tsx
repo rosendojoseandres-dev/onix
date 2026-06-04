@@ -341,7 +341,7 @@ export default function ContactPage() {
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: '-40px' }}
+              viewport={{ once: true, amount: 0.1 }}
               className="space-y-5"
             >
               {/* Contact Methods */}

@@ -28,10 +28,10 @@ import ScrollBackground from '@/components/ScrollBackground';
 // =========================================
 
 const fadeUp = (delay = 0, isHero = false) => ({
-  initial: { opacity: 0, y: 28 },
+  initial: { opacity: 0, y: 20 },
   ...(isHero
     ? { animate: { opacity: 1, y: 0 } }
-    : { whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-60px' } }),
+    : { whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.1 } }),
   transition: { duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
 });
 
@@ -227,7 +227,7 @@ export default function AcercaDePage() {
                     key={item.label}
                     initial={{ opacity: 0, scale: 0.95, y: 15 }}
                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-40px' }}
+                    viewport={{ once: true, amount: 0.1 }}
                     transition={{ delay: 0.1 * i, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     className="bg-zinc-900/50 border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] transition-colors duration-300"
                   >

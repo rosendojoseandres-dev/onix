@@ -27,10 +27,11 @@ import ScrollBackground from '@/components/ScrollBackground';
 // ANIMATION VARIANTS
 // =========================================
 
-const fadeUp = (delay = 0) => ({
+const fadeUp = (delay = 0, isHero = false) => ({
   initial: { opacity: 0, y: 28 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-60px' },
+  ...(isHero
+    ? { animate: { opacity: 1, y: 0 } }
+    : { whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-60px' } }),
   transition: { duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
 });
 
@@ -140,7 +141,7 @@ export default function AcercaDePage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-white/[0.03] blur-[120px] pointer-events-none rounded-full" />
 
           <div className="relative max-w-4xl mx-auto">
-            <motion.div {...fadeUp(0)}>
+            <motion.div {...fadeUp(0, true)}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-zinc-400 text-xs font-medium tracking-widest uppercase mb-6">
                 <Globe size={12} />
                 Importación directa
@@ -148,7 +149,7 @@ export default function AcercaDePage() {
             </motion.div>
 
             <motion.h1
-              {...fadeUp(0.08)}
+              {...fadeUp(0.08, true)}
               className="text-5xl sm:text-6xl md:text-7xl font-light tracking-tight text-[#f4f4f4] mb-6"
             >
               Somos{' '}
@@ -158,7 +159,7 @@ export default function AcercaDePage() {
             </motion.h1>
 
             <motion.p
-              {...fadeUp(0.16)}
+              {...fadeUp(0.16, true)}
               className="text-zinc-400 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
             >
               Nacimos con una misión clara: acercar los mejores productos del mundo a Colombia y
@@ -224,10 +225,10 @@ export default function AcercaDePage() {
                 ].map((item, i) => (
                   <motion.div
                     key={item.label}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 * i, duration: 0.5 }}
+                    initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-40px' }}
+                    transition={{ delay: 0.1 * i, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     className="bg-zinc-900/50 border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] transition-colors duration-300"
                   >
                     <item.icon size={28} className="text-zinc-400" />

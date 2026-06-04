@@ -174,12 +174,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8 lg:gap-12">
 
             {/* ── LEFT: Form ── */}
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="bg-zinc-900/40 border border-white/[0.06] rounded-3xl p-6 sm:p-8 backdrop-blur-sm"
-            >
+            <div className="bg-zinc-900/40 border border-white/[0.06] rounded-3xl p-6 sm:p-8 backdrop-blur-sm">
               <AnimatePresence mode="wait">
                 {submitted ? (
                   <motion.div
@@ -216,8 +211,10 @@ export default function ContactPage() {
                   <motion.form
                     key="form"
                     onSubmit={handleSubmit}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit={{ opacity: 0, y: -20, transition: { duration: 0.3 } }}
                     className="space-y-5"
                   >
                     <motion.div variants={itemVariants}>
@@ -337,13 +334,14 @@ export default function ContactPage() {
                   </motion.form>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
 
             {/* ── RIGHT: Info ── */}
             <motion.div
               variants={containerVariants}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-40px' }}
               className="space-y-5"
             >
               {/* Contact Methods */}

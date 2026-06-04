@@ -8,21 +8,43 @@ export default function IphoneShowcase() {
   return (
     <section className="relative w-full min-h-[70vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden">
       
-      {/* Immersive Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=2500&auto=format&fit=crop"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+      {/* Immersive Animated Background */}
+      <div className="absolute inset-0 z-0 bg-black overflow-hidden">
+        {/* Animated Image */}
+        <motion.img 
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          src="https://images.unsplash.com/photo-1678652733527-31c34139e3f1?q=80&w=2500&auto=format&fit=crop"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
           alt="iPhone 14 Pro Max"
         />
         
-        {/* Subtle Purple Tint Overlay */}
-        <div className="absolute inset-0 bg-indigo-950/20 mix-blend-color" />
-        
-        {/* Gradients to seamlessly blend into the page above and below */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-100" />
-        <div className="absolute inset-0 bg-gradient-to-l from-black via-black/80 to-transparent" />
-        <div className="absolute inset-0 bg-black/40" /> 
+        {/* Dynamic Light Orbs */}
+        <motion.div 
+          animate={{ 
+            x: [0, 60, 0], 
+            y: [0, -40, 0],
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.5, 0.2]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-32 left-1/4 w-[40rem] h-[40rem] bg-indigo-500/30 rounded-full blur-[130px] mix-blend-screen pointer-events-none"
+        />
+        <motion.div 
+          animate={{ 
+            x: [0, -60, 0], 
+            y: [0, 60, 0],
+            scale: [1, 1.3, 1],
+            opacity: [0.1, 0.4, 0.1]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-0 right-1/4 w-[35rem] h-[35rem] bg-purple-500/20 rounded-full blur-[130px] mix-blend-screen pointer-events-none"
+        />
+
+        {/* Cinematic Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-100 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-black/40 pointer-events-none" /> 
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-24 flex flex-col md:flex-row-reverse items-center">

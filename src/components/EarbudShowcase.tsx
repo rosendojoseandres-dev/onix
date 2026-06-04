@@ -3,13 +3,12 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import {
-  Battery,
-  Sliders,
-  ChevronRight,
   Zap,
-  Bluetooth,
-  Wifi,
-  Music,
+  Battery,
+  Sun,
+  Plug,
+  ChevronRight,
+  Sliders,
   LucideIcon,
 } from 'lucide-react';
 
@@ -17,66 +16,68 @@ import {
 // 1. CONFIGURATION & DATA TYPES
 // =========================================
 
-export type ProductId = 'left' | 'right';
+export type ModeId = 'fast' | 'solar';
 
 export interface FeatureMetric {
   label: string;
   value: number; // 0-100
+  display: string;
   icon: LucideIcon;
 }
 
-export interface ProductData {
-  id: ProductId;
-  label: string; // Display name for the switcher
+export interface ModeData {
+  id: ModeId;
+  label: string;
   title: string;
   description: string;
   image: string;
   colors: {
-    gradient: string; // Tailwind gradient classes
-    glow: string;     // Tailwind color class for accents
-    ring: string;     // Tailwind border color for rings
+    gradient: string;
+    glow: string;
+    accent: string;
   };
   stats: {
-    connectionStatus: string;
-    batteryLevel: number;
+    capacity: string;
+    chargeLevel: number;
   };
   features: FeatureMetric[];
 }
 
-// Default Data (Easy to Modify Here)
-const PRODUCT_DATA: Record<ProductId, ProductData> = {
-  left: {
-    id: 'left',
-    label: 'Left',
-    title: 'Spatial Anchor',
-    description: 'The primary node for binaural synchronization. Handles low-latency transmission and anchors the spatial audio soundstage.',
-    image: 'https://ik.imagekit.io/kqmrslzuq/SOUND/left-earbud.png',
+const PRODUCT_DATA: Record<ModeId, ModeData> = {
+  fast: {
+    id: 'fast',
+    label: 'Carga Rápida',
+    title: 'De 0% a 80% en 50 min',
+    description:
+      'La tecnología X-Stream de EcoFlow carga la DELTA 2 más rápido que cualquier otra estación portátil del mercado. Desde el enchufe a lista para usar en menos de una hora.',
+    image: 'https://websiteoss.ecoflow.com/media/delta2/pc/8ffbd023f0fdc44f69f8ed08387f99e1.jpg',
     colors: {
-      gradient: 'from-blue-600 to-indigo-900',
-      glow: 'bg-blue-500',
-      ring: 'border-l-blue-500/50',
+      gradient: 'from-emerald-500 to-teal-900',
+      glow: 'bg-emerald-500',
+      accent: 'emerald',
     },
-    stats: { connectionStatus: 'Connected', batteryLevel: 82 },
+    stats: { capacity: '1024 Wh', chargeLevel: 80 },
     features: [
-      { label: 'Latency', value: 12, icon: Zap },
-      { label: 'Sync Rate', value: 98, icon: Wifi },
+      { label: 'Carga AC', value: 80, display: '1200 W', icon: Zap },
+      { label: 'Tiempo carga', value: 92, display: '50 min', icon: Battery },
     ],
   },
-  right: {
-    id: 'right',
-    label: 'Right',
-    title: 'Vocal Clarity',
-    description: 'Optimized for high-frequency detail and voice pickup. Contains the beamforming microphone array for crystal clear calls.',
-    image: 'https://ik.imagekit.io/kqmrslzuq/SOUND/right-earbud.png',
+  solar: {
+    id: 'solar',
+    label: 'Energía Solar',
+    title: 'Recarga con el sol',
+    description:
+      'Compatible con paneles solares EcoFlow de hasta 500 W. Carga la DELTA 2 desde cualquier lugar usando energía solar limpia y renovable.',
+    image: 'https://websiteoss.ecoflow.com/media/delta2/pc/8ffbd023f0fdc44f69f8ed08387f99e1.jpg',
     colors: {
-      gradient: 'from-emerald-600 to-teal-900',
-      glow: 'bg-emerald-500',
-      ring: 'border-r-emerald-500/50',
+      gradient: 'from-amber-500 to-orange-900',
+      glow: 'bg-amber-400',
+      accent: 'amber',
     },
-    stats: { connectionStatus: 'Connected', batteryLevel: 74 },
+    stats: { capacity: '1024 Wh', chargeLevel: 65 },
     features: [
-      { label: 'Bitrate', value: 94, icon: Bluetooth },
-      { label: 'Clarifier', value: 88, icon: Music },
+      { label: 'Potencia solar', value: 70, display: '500 W máx.', icon: Sun },
+      { label: 'Salidas AC', value: 85, display: '1800 W', icon: Plug },
     ],
   },
 };
@@ -92,10 +93,7 @@ const ANIMATIONS: any = {
       opacity: 1,
       transition: { staggerChildren: 0.1, delayChildren: 0.1 },
     },
-    exit: {
-      opacity: 0,
-      transition: { duration: 0.2 },
-    },
+    exit: { opacity: 0, transition: { duration: 0.2 } },
   },
   item: {
     hidden: { opacity: 0, y: 20, filter: 'blur(10px)' },
@@ -107,25 +105,23 @@ const ANIMATIONS: any = {
     },
     exit: { opacity: 0, y: -10, filter: 'blur(5px)' },
   },
-  image: (isLeft: boolean): Variants => ({
+  image: (isFast: boolean): Variants => ({
     initial: {
       opacity: 0,
-      scale: 1.5,
+      scale: 1.15,
       filter: 'blur(15px)',
-      rotate: isLeft ? -30 : 30,
-      x: isLeft ? -80 : 80,
+      y: isFast ? 40 : -40,
     },
     animate: {
       opacity: 1,
       scale: 1,
       filter: 'blur(0px)',
-      rotate: 0,
-      x: 0,
-      transition: { type: 'spring', stiffness: 260, damping: 20 },
+      y: 0,
+      transition: { type: 'spring', stiffness: 200, damping: 22 },
     },
     exit: {
       opacity: 0,
-      scale: 0.6,
+      scale: 0.9,
       filter: 'blur(20px)',
       transition: { duration: 0.25 },
     },
@@ -136,64 +132,62 @@ const ANIMATIONS: any = {
 // 3. SUB-COMPONENTS
 // =========================================
 
-const BackgroundGradient = ({ isLeft }: { isLeft: boolean }) => (
+const BackgroundGradient = ({ isFast }: { isFast: boolean }) => (
   <div className="absolute inset-0 pointer-events-none z-0">
     <motion.div
       animate={{
-        background: isLeft
-          ? 'radial-gradient(circle at 0% 50%, rgba(59, 130, 246, 0.15), transparent 50%)'
-          : 'radial-gradient(circle at 100% 50%, rgba(16, 185, 129, 0.15), transparent 50%)',
+        background: isFast
+          ? 'radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.12), transparent 55%)'
+          : 'radial-gradient(circle at 80% 50%, rgba(245, 158, 11, 0.12), transparent 55%)',
       }}
-      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
       className="absolute inset-0"
     />
   </div>
 );
 
-const ProductVisual = ({ data, isLeft }: { data: ProductData; isLeft: boolean }) => (
-  <motion.div layout="position" className="relative group shrink-0">
-    {/* Animated Rings */}
+const ProductVisual = ({ data, isFast }: { data: ModeData; isFast: boolean }) => (
+  <motion.div layout="position" className="relative shrink-0">
+    {/* Animated ambient ring */}
     <motion.div
       animate={{ rotate: 360 }}
-      transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-      className={`absolute inset-[-20%] rounded-full border border-dashed border-white/10 ${data.colors.ring}`}
+      transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+      className="absolute inset-[-12%] rounded-full border border-dashed border-white/[0.07]"
     />
+    {/* Glow blob */}
     <motion.div
-      animate={{ scale: [1, 1.05, 1] }}
-      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-      className={`absolute inset-0 rounded-full bg-gradient-to-br ${data.colors.gradient} blur-2xl opacity-40`}
+      animate={{ scale: [1, 1.06, 1] }}
+      transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+      className={`absolute inset-0 rounded-full bg-gradient-to-br ${data.colors.gradient} blur-3xl opacity-25`}
     />
 
     {/* Image Container */}
-    <div className="relative h-64 w-64 sm:h-80 sm:w-80 md:h-[450px] md:w-[450px] rounded-full border border-white/5 shadow-2xl flex items-center justify-center overflow-hidden bg-black/20 backdrop-blur-sm">
+    <div className="relative h-64 w-64 sm:h-80 sm:w-80 md:h-[450px] md:w-[450px] rounded-3xl border border-white/[0.06] shadow-2xl flex items-center justify-center overflow-hidden bg-zinc-950/60 backdrop-blur-sm">
       <motion.div
-        animate={{ y: [-10, 10, -10] }}
-        transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
-        className="relative z-10 w-full h-full flex items-center justify-center"
+        animate={{ y: [-8, 8, -8] }}
+        transition={{ repeat: Infinity, duration: 7, ease: 'easeInOut' }}
+        className="relative z-10 w-full h-full flex items-center justify-center p-8"
       >
         <AnimatePresence mode="wait">
           <motion.img
             key={data.id}
             src={data.image}
-            alt={`${data.title}`}
-            variants={ANIMATIONS.image(isLeft)}
+            alt="EcoFlow DELTA 2"
+            variants={ANIMATIONS.image(isFast)}
             initial="initial"
             animate="animate"
             exit="exit"
-            className="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-4"
+            className="w-full h-full object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]"
             draggable={false}
           />
         </AnimatePresence>
       </motion.div>
     </div>
-
   </motion.div>
 );
 
-const ProductDetails = ({ data, isLeft }: { data: ProductData; isLeft: boolean }) => {
-  const alignClass = isLeft ? 'items-start text-left' : 'items-end text-right';
-  const flexDirClass = isLeft ? 'flex-row' : 'flex-row-reverse';
-  const barColorClass = isLeft ? 'left-0 bg-blue-500' : 'right-0 bg-emerald-500';
+const ProductDetails = ({ data, isFast }: { data: ModeData; isFast: boolean }) => {
+  const barColor = isFast ? 'bg-emerald-500' : 'bg-amber-400';
 
   return (
     <motion.div
@@ -201,111 +195,143 @@ const ProductDetails = ({ data, isLeft }: { data: ProductData; isLeft: boolean }
       initial="hidden"
       animate="visible"
       exit="exit"
-      className={`flex flex-col ${alignClass}`}
+      className="flex flex-col items-start text-left"
     >
-      <motion.h2 variants={ANIMATIONS.item} className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-2">
-        {data.label} Earbud
-      </motion.h2>
+      <motion.p
+        variants={ANIMATIONS.item}
+        className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-2"
+      >
+        EcoFlow DELTA 2 · {data.label}
+      </motion.p>
 
-      <motion.h1 variants={ANIMATIONS.item} className="text-4xl md:text-5xl font-semibold tracking-tight mb-2 text-[#f4f4f4]">
+      <motion.h1
+        variants={ANIMATIONS.item}
+        className="text-3xl md:text-4xl font-semibold tracking-tight mb-3 text-[#f4f4f4] leading-snug"
+      >
         {data.title}
       </motion.h1>
 
-      <motion.p variants={ANIMATIONS.item} className={`text-zinc-400 mb-8 max-w-sm leading-relaxed ${isLeft ? 'mr-auto' : 'ml-auto'}`}>
+      <motion.p
+        variants={ANIMATIONS.item}
+        className="text-zinc-400 mb-8 max-w-sm leading-relaxed text-sm sm:text-base"
+      >
         {data.description}
       </motion.p>
 
       {/* Feature Grid */}
-      <motion.div variants={ANIMATIONS.item} className="w-full space-y-6 bg-zinc-900/40 p-6 rounded-2xl border border-white/5 backdrop-blur-sm">
+      <motion.div
+        variants={ANIMATIONS.item}
+        className="w-full space-y-5 bg-zinc-900/50 p-6 rounded-2xl border border-white/[0.06] backdrop-blur-sm"
+      >
         {data.features.map((feature, idx) => (
-          <div key={feature.label} className="group">
-            <div className={`flex items-center justify-between mb-3 text-sm ${flexDirClass}`}>
-              <div className={`flex items-center gap-2 ${feature.value > 50 ? 'text-zinc-200' : 'text-zinc-400'}`}>
-                <feature.icon size={16} /> <span>{feature.label}</span>
+          <div key={feature.label}>
+            <div className="flex items-center justify-between mb-2 text-sm">
+              <div className="flex items-center gap-2 text-zinc-300">
+                <feature.icon size={15} />
+                <span>{feature.label}</span>
               </div>
-              <span className="font-mono text-xs text-zinc-500">{feature.value}%</span>
+              <span className="font-mono text-xs text-zinc-400 font-semibold">
+                {feature.display}
+              </span>
             </div>
-            <div className="relative h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
+            <div className="relative h-1.5 w-full bg-zinc-800 rounded-full overflow-hidden">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${feature.value}%` }}
-                transition={{ duration: 1, delay: 0.4 + idx * 0.15 }}
-                className={`absolute top-0 bottom-0 ${barColorClass} opacity-80`}
+                transition={{ duration: 1.1, delay: 0.4 + idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className={`absolute top-0 bottom-0 ${barColor} opacity-90 rounded-full`}
               />
             </div>
           </div>
         ))}
 
-        <div className={`pt-4 flex ${isLeft ? 'justify-start' : 'justify-end'}`}>
-          <button type="button" className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-300 hover:text-white transition-colors group">
-            <Sliders size={14} /> View Specs
-            <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+        <div className="pt-3 flex justify-between items-center">
+          <div className="flex items-center gap-2 text-zinc-500 text-xs">
+            <Battery size={14} />
+            <span>Capacidad: {data.stats.capacity}</span>
+          </div>
+          <button
+            type="button"
+            className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-zinc-400 hover:text-white transition-colors group"
+          >
+            <Sliders size={13} />
+            Ver Specs
+            <ChevronRight size={13} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </motion.div>
 
-      {/* Battery */}
-      <motion.div variants={ANIMATIONS.item} className={`mt-6 flex items-center gap-3 text-zinc-500 ${flexDirClass}`}>
-        <Battery size={16} />
-        <span className="text-sm font-medium">{data.stats.batteryLevel}% Charge</span>
+      {/* Charge indicator */}
+      <motion.div
+        variants={ANIMATIONS.item}
+        className="mt-5 flex items-center gap-3 text-zinc-500"
+      >
+        <Battery size={15} />
+        <span className="text-sm font-medium">{data.stats.chargeLevel}% Cargado</span>
       </motion.div>
     </motion.div>
   );
 };
-
-
 
 // =========================================
 // 4. MAIN COMPONENT
 // =========================================
 
 export default function EarbudShowcase({ children }: { children?: React.ReactNode }) {
-  const [activeSide, setActiveSide] = useState<ProductId>('left');
+  const [activeMode, setActiveMode] = useState<ModeId>('fast');
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveSide((prev) => (prev === 'left' ? 'right' : 'left'));
+      setActiveMode((prev) => (prev === 'fast' ? 'solar' : 'fast'));
     }, 10000);
     return () => clearInterval(interval);
   }, []);
 
-  const currentData = PRODUCT_DATA[activeSide];
-  const isLeft = activeSide === 'left';
+  const currentData = PRODUCT_DATA[activeMode];
+  const isFast = activeMode === 'fast';
 
   return (
     <div className="relative min-h-screen w-full bg-transparent text-zinc-100 flex flex-col items-center justify-center">
-      <BackgroundGradient isLeft={isLeft} />
-      
+      <BackgroundGradient isFast={isFast} />
+
       <div className="relative z-10 w-full px-4 sm:px-6 pt-28 sm:pt-32 pb-32 sm:pb-48 lg:pb-64 flex flex-col items-center justify-center max-w-7xl mx-auto min-h-screen">
-        {/* Render the hero title or any children inside the component but above the earbuds */}
+        {/* Hero children (title, etc.) */}
         {children && (
-          <div className="w-full mb-16 sm:mb-24 md:mb-32 lg:mb-48">
-            {children}
-          </div>
+          <div className="w-full mb-16 sm:mb-24 md:mb-32 lg:mb-48">{children}</div>
         )}
 
         <motion.div
           layout
           transition={{ type: 'spring', bounce: 0, duration: 0.9 }}
-          className={`flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-12 md:gap-24 lg:gap-48 w-full ${
-            isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
-          }`}
+          className="flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-12 md:gap-24 lg:gap-32 w-full"
         >
           {/* Left Column: Visuals */}
-          <ProductVisual data={currentData} isLeft={isLeft} />
+          <ProductVisual data={currentData} isFast={isFast} />
 
           {/* Right Column: Content */}
           <motion.div layout="position" className="w-full max-w-md">
+            {/* Mode switcher pills */}
+            <div className="flex gap-2 mb-8">
+              {(Object.keys(PRODUCT_DATA) as ModeId[]).map((modeKey) => (
+                <button
+                  key={modeKey}
+                  onClick={() => setActiveMode(modeKey)}
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                    activeMode === modeKey
+                      ? 'bg-white text-black'
+                      : 'bg-zinc-900/60 text-zinc-500 border border-white/[0.08] hover:text-zinc-300'
+                  }`}
+                >
+                  {PRODUCT_DATA[modeKey].label}
+                </button>
+              ))}
+            </div>
+
             <AnimatePresence mode="wait">
-              <ProductDetails
-                key={activeSide} // Key forces re-render for animation
-                data={currentData}
-                isLeft={isLeft}
-              />
+              <ProductDetails key={activeMode} data={currentData} isFast={isFast} />
             </AnimatePresence>
           </motion.div>
         </motion.div>
-
       </div>
     </div>
   );

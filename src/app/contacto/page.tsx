@@ -138,8 +138,8 @@ export default function ContactPage() {
         <Navbar />
 
         {/* ── Hero ── */}
-        <section className="relative pt-36 pb-16 sm:pt-44 sm:pb-20 px-4">
-          <div className="max-w-5xl mx-auto text-center">
+        <section className="relative pt-32 pb-12 sm:pt-40 sm:pb-16 px-4">
+          <div className="max-w-[95%] mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -170,7 +170,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Main Grid ── */}
-        <section className="flex-1 px-4 pb-24 max-w-6xl mx-auto w-full">
+        <section className="flex-1 px-4 pb-24 max-w-[95%] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8 lg:gap-12">
 
             {/* ── LEFT: Form ── */}

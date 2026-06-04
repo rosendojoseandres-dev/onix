@@ -116,10 +116,10 @@ export default function AcercaDePage() {
         <Navbar />
 
         {/* ── HERO ── animate-only on first load, no scroll trigger */}
-        <section className="relative pt-36 pb-20 sm:pt-44 sm:pb-28 px-4 text-center overflow-hidden">
+        <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-24 px-4 text-center overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-white/[0.03] blur-[120px] pointer-events-none rounded-full" />
 
-          <div className="relative max-w-4xl mx-auto">
+          <div className="relative max-w-[95%] mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -157,7 +157,7 @@ export default function AcercaDePage() {
         </section>
 
         {/* ── STATS — fully visible, no animation ── */}
-        <section className="px-4 pb-24 max-w-5xl mx-auto w-full">
+        <section className="px-4 pb-24 max-w-[95%] mx-auto w-full">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {STATS.map((stat) => (
               <div
@@ -173,7 +173,7 @@ export default function AcercaDePage() {
         </section>
 
         {/* ── STORY ── */}
-        <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
+        <section className="px-4 pb-28 max-w-[95%] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-4">
@@ -222,7 +222,7 @@ export default function AcercaDePage() {
         </section>
 
         {/* ── VALUES ── */}
-        <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
+        <section className="px-4 pb-28 max-w-[95%] mx-auto w-full">
           <div className="text-center mb-12">
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
               Lo que nos define
@@ -247,7 +247,7 @@ export default function AcercaDePage() {
         </section>
 
         {/* ── HOW WE WORK ── */}
-        <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
+        <section className="px-4 pb-28 max-w-[95%] mx-auto w-full">
           <div className="text-center mb-12">
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
               El proceso
@@ -272,7 +272,7 @@ export default function AcercaDePage() {
         </section>
 
         {/* ── TEAM ── */}
-        <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
+        <section className="px-4 pb-28 max-w-[95%] mx-auto w-full">
           <div className="text-center mb-12">
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
               Quiénes somos
@@ -300,7 +300,7 @@ export default function AcercaDePage() {
         </section>
 
         {/* ── LOCATIONS ── */}
-        <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
+        <section className="px-4 pb-28 max-w-[95%] mx-auto w-full">
           <div className="bg-zinc-900/40 border border-white/[0.06] rounded-3xl p-8 sm:p-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
@@ -356,7 +356,7 @@ export default function AcercaDePage() {
         </section>
 
         {/* ── CTA ── */}
-        <section className="px-4 pb-32 max-w-3xl mx-auto w-full text-center">
+        <section className="px-4 pb-32 max-w-[95%] mx-auto w-full text-center">
           <div className="relative bg-zinc-900/60 border border-white/[0.08] rounded-3xl p-10 sm:p-14 overflow-hidden">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[150px] bg-white/[0.04] blur-[80px] pointer-events-none rounded-full" />
             <div className="relative">

@@ -6,54 +6,42 @@ import Link from 'next/link';
 
 export default function PromoShowcase() {
   return (
-    <section className="relative w-full min-h-[70vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full min-h-[70vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden bg-black">
       
-      {/* Immersive Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="/applewatch.png"
-          className="absolute inset-0 w-full h-full object-contain object-center opacity-80 md:opacity-100 scale-90 md:scale-100"
-          alt="Apple Watch Ultra 2"
-        />
-        
-        {/* Subtle Amber Tint Overlay for the Ultra Action Button Vibe */}
-        <div className="absolute inset-0 bg-amber-950/20 mix-blend-color" />
-        
-        {/* Gradients to seamlessly blend into the page above and below */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-100" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
-        <div className="absolute inset-0 bg-black/40" /> 
-      </div>
+      {/* Background gradients for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-amber-950/10 to-black pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.05)_0%,transparent_50%)] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-24 flex flex-col md:flex-row items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4 items-center">
         
-        {/* Floating Text Content */}
-        <div className="w-full md:w-1/2 md:pr-12">
+        {/* Left Column: Text Content */}
+        <div className="w-full flex flex-col items-center lg:items-start text-center lg:text-left order-3 lg:order-1">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="flex flex-col items-center lg:items-start"
           >
-            <div className="flex items-center gap-3 mb-8">
+            <div className="flex items-center gap-3 mb-6 lg:mb-8">
               <span className="text-amber-500/80 text-xs sm:text-sm font-bold uppercase tracking-[0.25em] drop-shadow-[0_0_8px_rgba(245,158,11,0.3)]">
                 Oferta Especial
               </span>
-              <div className="h-px w-16 bg-amber-500/30" />
+              <div className="h-px w-12 lg:w-16 bg-amber-500/30" />
             </div>
 
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-semibold text-white mb-6 tracking-tighter leading-[1.05]">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white mb-6 tracking-tighter leading-[1.05]">
               Apple Watch<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500 drop-shadow-[0_0_15px_rgba(245,158,11,0.15)]">
                 Ultra 2
               </span>
             </h2>
 
-            <p className="text-zinc-300 text-lg sm:text-xl mb-12 max-w-lg leading-relaxed font-light">
+            <p className="text-zinc-300 text-base sm:text-lg lg:text-xl mb-10 lg:mb-12 max-w-md leading-relaxed font-light">
               Diseñado para los extremos. Caja de titanio aeroespacial, GPS de doble frecuencia de alta precisión y hasta 36 horas de batería.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8">
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-6 lg:gap-8">
               <Link
                 href="/catalogo/8"
                 className="group flex items-center justify-center gap-3 bg-amber-600/90 text-white px-8 py-4 rounded-full font-bold hover:bg-amber-500 transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.2)] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)]"
@@ -62,27 +50,42 @@ export default function PromoShowcase() {
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               
-              <div className="flex flex-col">
-                <span className="text-sm text-zinc-500 line-through tracking-wider">Precio regular $899.00</span>
-                <span className="text-3xl font-bold text-white">$799.00</span>
+              <div className="flex flex-col items-center lg:items-start">
+                <span className="text-sm text-zinc-500 line-through tracking-wider">Regular $899</span>
+                <span className="text-2xl lg:text-3xl font-bold text-white">$799</span>
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Floating Specs on Desktop */}
-        <div className="hidden md:flex w-1/2 flex-col gap-6 items-end justify-center pt-12">
+        {/* Center Column: Product Image */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, type: 'spring' }}
+          viewport={{ once: true }}
+          className="w-full flex justify-center items-center order-1 lg:order-2 relative z-20"
+        >
+          <img 
+            src="/applewatch.png" 
+            alt="Apple Watch Ultra 2" 
+            className="w-full max-w-[280px] sm:max-w-sm lg:max-w-[450px] object-contain mix-blend-lighten drop-shadow-2xl"
+          />
+        </motion.div>
+
+        {/* Right Column: Specs on Desktop */}
+        <div className="hidden lg:flex flex-col gap-6 items-end justify-center order-2 lg:order-3">
            <motion.div 
              initial={{ opacity: 0, x: 30 }}
              whileInView={{ opacity: 1, x: 0 }}
              transition={{ duration: 0.6, delay: 0.2 }}
              viewport={{ once: true }}
-             className="flex items-center gap-4 bg-zinc-950/40 backdrop-blur-xl border border-amber-500/10 px-6 py-5 rounded-2xl w-72 shadow-[0_0_25px_rgba(245,158,11,0.05)] hover:border-amber-500/30 transition-colors"
+             className="flex items-center gap-4 bg-zinc-950/60 backdrop-blur-xl border border-amber-500/10 px-6 py-5 rounded-2xl w-72 shadow-[0_0_25px_rgba(245,158,11,0.05)] hover:border-amber-500/30 transition-colors text-right"
            >
-             <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 border border-amber-500/20">
+             <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 border border-amber-500/20 order-2">
                <Shield className="text-amber-500/80" size={24} />
              </div>
-             <div>
+             <div className="order-1 flex-1">
                <p className="text-xs text-amber-200/50 uppercase tracking-wider font-bold mb-1">Material</p>
                <p className="text-white font-medium">Titanio Aeroespacial</p>
              </div>
@@ -93,12 +96,12 @@ export default function PromoShowcase() {
              whileInView={{ opacity: 1, x: 0 }}
              transition={{ duration: 0.6, delay: 0.4 }}
              viewport={{ once: true }}
-             className="flex items-center gap-4 bg-zinc-950/40 backdrop-blur-xl border border-amber-500/10 px-6 py-5 rounded-2xl w-72 translate-x-8 shadow-[0_0_25px_rgba(245,158,11,0.05)] hover:border-amber-500/30 transition-colors"
+             className="flex items-center gap-4 bg-zinc-950/60 backdrop-blur-xl border border-amber-500/10 px-6 py-5 rounded-2xl w-72 -translate-x-4 shadow-[0_0_25px_rgba(245,158,11,0.05)] hover:border-amber-500/30 transition-colors text-right"
            >
-             <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 border border-amber-500/20">
+             <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 border border-amber-500/20 order-2">
                <Battery className="text-amber-500/80" size={24} />
              </div>
-             <div>
+             <div className="order-1 flex-1">
                <p className="text-xs text-amber-200/50 uppercase tracking-wider font-bold mb-1">Autonomía</p>
                <p className="text-white font-medium">Hasta 36 horas</p>
              </div>
@@ -109,14 +112,14 @@ export default function PromoShowcase() {
              whileInView={{ opacity: 1, x: 0 }}
              transition={{ duration: 0.6, delay: 0.6 }}
              viewport={{ once: true }}
-             className="flex items-center gap-4 bg-zinc-950/40 backdrop-blur-xl border border-amber-500/10 px-6 py-5 rounded-2xl w-72 shadow-[0_0_25px_rgba(245,158,11,0.05)] hover:border-amber-500/30 transition-colors"
+             className="flex items-center gap-4 bg-zinc-950/60 backdrop-blur-xl border border-amber-500/10 px-6 py-5 rounded-2xl w-72 shadow-[0_0_25px_rgba(245,158,11,0.05)] hover:border-amber-500/30 transition-colors text-right"
            >
-             <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 border border-amber-500/20">
+             <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 border border-amber-500/20 order-2">
                <Zap className="text-amber-500/80" size={24} />
              </div>
-             <div>
+             <div className="order-1 flex-1">
                <p className="text-xs text-amber-200/50 uppercase tracking-wider font-bold mb-1">Pantalla</p>
-               <p className="text-white font-medium">3000 nits de brillo</p>
+               <p className="text-white font-medium">3000 nits</p>
              </div>
            </motion.div>
         </div>

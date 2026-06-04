@@ -9,22 +9,16 @@ export default function PromoShowcase() {
     <section className="relative w-full min-h-[70vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden">
       
       {/* Immersive Background Image */}
-      <div className="absolute inset-0 z-0 bg-zinc-950">
+      <div className="absolute inset-0 z-0">
         <img 
           src="https://images.unsplash.com/photo-1617043786394-f977fa12eddf?q=80&w=2500&auto=format&fit=crop"
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-30 mix-blend-luminosity"
+          className="absolute inset-0 w-full h-full object-cover object-center"
           alt="Apple Watch Ultra 2"
         />
         
-        {/* CSS Smoke/Mist Effects (Amber/Orange) */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center md:justify-start md:pl-[5%]">
-          <div className="relative w-[300px] h-[300px] sm:w-[500px] sm:h-[500px]">
-            <div className="absolute inset-0 bg-orange-600/50 rounded-full blur-[100px] animate-pulse mix-blend-screen" style={{ animationDuration: '4s' }} />
-            <div className="absolute top-1/4 -left-1/4 w-3/4 h-3/4 bg-amber-500/50 rounded-full blur-[120px] animate-pulse mix-blend-screen" style={{ animationDuration: '6s', animationDelay: '1s' }} />
-            <div className="absolute -bottom-1/4 right-1/4 w-full h-full bg-red-600/40 rounded-full blur-[90px] animate-pulse mix-blend-screen" style={{ animationDuration: '5s', animationDelay: '2s' }} />
-          </div>
-        </div>
-
+        {/* Subtle Amber Tint Overlay for the Ultra Action Button Vibe */}
+        <div className="absolute inset-0 bg-amber-950/20 mix-blend-color" />
+        
         {/* Gradients to seamlessly blend into the page above and below */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-100" />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
@@ -83,13 +77,13 @@ export default function PromoShowcase() {
              whileInView={{ opacity: 1, x: 0 }}
              transition={{ duration: 0.6, delay: 0.2 }}
              viewport={{ once: true }}
-             className="flex items-center gap-4 bg-zinc-950/40 backdrop-blur-xl border border-amber-500/10 px-6 py-5 rounded-2xl w-72 shadow-[0_0_25px_rgba(245,158,11,0.05)] hover:border-amber-500/30 transition-colors"
+             className="flex items-center gap-4 bg-zinc-950/40 backdrop-blur-xl border border-white/10 px-6 py-5 rounded-2xl w-72 shadow-[0_0_25px_rgba(255,255,255,0.05)] hover:border-white/30 transition-colors"
            >
-             <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 border border-amber-500/20">
-               <Shield className="text-amber-500/80" size={24} />
+             <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
+               <Shield className="text-white" size={24} />
              </div>
              <div>
-               <p className="text-xs text-amber-200/50 uppercase tracking-wider font-bold mb-1">Material</p>
+               <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold mb-1">Material</p>
                <p className="text-white font-medium">Titanio Aeroespacial</p>
              </div>
            </motion.div>
@@ -99,13 +93,13 @@ export default function PromoShowcase() {
              whileInView={{ opacity: 1, x: 0 }}
              transition={{ duration: 0.6, delay: 0.4 }}
              viewport={{ once: true }}
-             className="flex items-center gap-4 bg-zinc-950/40 backdrop-blur-xl border border-amber-500/10 px-6 py-5 rounded-2xl w-72 translate-x-8 shadow-[0_0_25px_rgba(245,158,11,0.05)] hover:border-amber-500/30 transition-colors"
+             className="flex items-center gap-4 bg-zinc-950/40 backdrop-blur-xl border border-white/10 px-6 py-5 rounded-2xl w-72 translate-x-8 shadow-[0_0_25px_rgba(255,255,255,0.05)] hover:border-white/30 transition-colors"
            >
-             <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 border border-amber-500/20">
-               <Battery className="text-amber-500/80" size={24} />
+             <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
+               <Battery className="text-white" size={24} />
              </div>
              <div>
-               <p className="text-xs text-amber-200/50 uppercase tracking-wider font-bold mb-1">Autonomía</p>
+               <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold mb-1">Autonomía</p>
                <p className="text-white font-medium">Hasta 36 horas</p>
              </div>
            </motion.div>
@@ -115,13 +109,13 @@ export default function PromoShowcase() {
              whileInView={{ opacity: 1, x: 0 }}
              transition={{ duration: 0.6, delay: 0.6 }}
              viewport={{ once: true }}
-             className="flex items-center gap-4 bg-zinc-950/40 backdrop-blur-xl border border-amber-500/10 px-6 py-5 rounded-2xl w-72 shadow-[0_0_25px_rgba(245,158,11,0.05)] hover:border-amber-500/30 transition-colors"
+             className="flex items-center gap-4 bg-zinc-950/40 backdrop-blur-xl border border-white/10 px-6 py-5 rounded-2xl w-72 shadow-[0_0_25px_rgba(255,255,255,0.05)] hover:border-white/30 transition-colors"
            >
-             <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 border border-amber-500/20">
-               <Zap className="text-amber-500/80" size={24} />
+             <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
+               <Zap className="text-white" size={24} />
              </div>
              <div>
-               <p className="text-xs text-amber-200/50 uppercase tracking-wider font-bold mb-1">Pantalla</p>
+               <p className="text-xs text-zinc-400 uppercase tracking-wider font-bold mb-1">Pantalla</p>
                <p className="text-white font-medium">3000 nits de brillo</p>
              </div>
            </motion.div>

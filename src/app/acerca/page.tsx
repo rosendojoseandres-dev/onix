@@ -15,33 +15,12 @@ import {
   Package,
   MessageCircle,
   MessageSquare,
-  Map,
-  Rocket
+  Rocket,
 } from 'lucide-react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollBackground from '@/components/ScrollBackground';
-
-// =========================================
-// ANIMATION VARIANTS
-// =========================================
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const fadeUpVariant = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
-  },
-};
 
 // =========================================
 // DATA
@@ -50,7 +29,7 @@ const fadeUpVariant = {
 const STATS = [
   { value: '2020', label: 'Año de fundación', icon: TrendingUp },
   { value: '+500', label: 'Clientes satisfechos', icon: Users },
-  { value: '2', label: 'Países de cobertura', icon: Globe },
+  { value: '2',    label: 'Países de cobertura', icon: Globe },
   { value: '100%', label: 'Productos verificados', icon: Shield },
 ];
 
@@ -136,18 +115,16 @@ export default function AcercaDePage() {
       <main className="min-h-screen flex flex-col relative overflow-x-hidden">
         <Navbar />
 
-        {/* ── HERO ── */}
+        {/* ── HERO ── animate-only on first load, no scroll trigger */}
         <section className="relative pt-36 pb-20 sm:pt-44 sm:pb-28 px-4 text-center overflow-hidden">
-          {/* Ambient glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-white/[0.03] blur-[120px] pointer-events-none rounded-full" />
 
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="relative max-w-4xl mx-auto"
-          >
-            <motion.div variants={fadeUpVariant}>
+          <div className="relative max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-zinc-400 text-xs font-medium tracking-widest uppercase mb-6">
                 <Globe size={12} />
                 Importación directa
@@ -155,7 +132,9 @@ export default function AcercaDePage() {
             </motion.div>
 
             <motion.h1
-              variants={fadeUpVariant}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="text-5xl sm:text-6xl md:text-7xl font-light tracking-tight text-[#f4f4f4] mb-6"
             >
               Somos{' '}
@@ -165,48 +144,38 @@ export default function AcercaDePage() {
             </motion.h1>
 
             <motion.p
-              variants={fadeUpVariant}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
               className="text-zinc-400 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto"
             >
               Nacimos con una misión clara: acercar los mejores productos del mundo a Colombia y
               Venezuela, con precios justos, transparencia total y la confianza de un equipo que
               entiende lo que necesitas.
             </motion.p>
-          </motion.div>
+          </div>
         </section>
 
-        {/* ── STATS ── */}
+        {/* ── STATS — fully visible, no animation ── */}
         <section className="px-4 pb-24 max-w-5xl mx-auto w-full">
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4"
-          >
-            {STATS.map((stat, i) => (
-              <motion.div
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {STATS.map((stat) => (
+              <div
                 key={stat.label}
-                variants={fadeUpVariant}
                 className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 text-center hover:border-white/[0.12] transition-colors duration-300"
               >
                 <stat.icon size={20} className="text-zinc-500 mx-auto mb-3" />
                 <p className="text-3xl font-bold text-white mb-1">{stat.value}</p>
                 <p className="text-xs text-zinc-500">{stat.label}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </section>
 
         {/* ── STORY ── */}
         <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
-              variants={fadeUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-4">
                 Nuestra historia
               </p>
@@ -221,74 +190,50 @@ export default function AcercaDePage() {
                   compra confusos o poco transparentes.
                 </p>
                 <p>
-                  Decidimos cambiar eso. Establecimos conexiones directas con proveedores, construimos un sistema de logística propio y creamos ONIX — una tienda
-                  donde comprar en el exterior es tan fácil como escribir un mensaje de WhatsApp.
+                  Decidimos cambiar eso. Establecimos conexiones directas con proveedores,
+                  construimos un sistema de logística propio y creamos ONIX — una tienda donde
+                  comprar en el exterior es tan fácil como escribir un mensaje de WhatsApp.
                 </p>
                 <p>
                   Hoy operamos en Colombia y Venezuela, con cientos de clientes que confían en
                   nosotros para traer lo que quieren, cuando lo necesitan.
                 </p>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Visual accent */}
-            <motion.div 
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-              className="relative"
-            >
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { icon: PackageCheck, label: 'Productos Originales', sub: 'Calidad garantizada' },
-                  { icon: MapPin, label: 'Colombia', sub: 'Entregas a todo el país' },
-                  { icon: MapPin, label: 'Venezuela', sub: 'Entregas a todo el país' },
-                  { icon: PackageCheck, label: '+500 pedidos', sub: 'Completados con éxito' },
-                ].map((item, i) => (
-                  <motion.div
-                    key={item.label}
-                    variants={fadeUpVariant}
-                    className="bg-zinc-900/50 border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] transition-colors duration-300"
-                  >
-                    <item.icon size={28} className="text-zinc-400" />
-                    <p className="text-sm font-semibold text-[#f4f4f4] mt-3 mb-0.5">{item.label}</p>
-                    <p className="text-xs text-zinc-500">{item.sub}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { icon: PackageCheck, label: 'Productos Originales', sub: 'Calidad garantizada' },
+                { icon: MapPin,        label: 'Colombia',            sub: 'Entregas a todo el país' },
+                { icon: MapPin,        label: 'Venezuela',           sub: 'Entregas a todo el país' },
+                { icon: PackageCheck, label: '+500 pedidos',         sub: 'Completados con éxito' },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="bg-zinc-900/50 border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] transition-colors duration-300"
+                >
+                  <item.icon size={28} className="text-zinc-400" />
+                  <p className="text-sm font-semibold text-[#f4f4f4] mt-3 mb-0.5">{item.label}</p>
+                  <p className="text-xs text-zinc-500">{item.sub}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* ── VALUES ── */}
         <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
-          <motion.div 
-            variants={fadeUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="text-center mb-12"
-          >
+          <div className="text-center mb-12">
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
               Lo que nos define
             </p>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#f4f4f4]">
-              Nuestros valores
-            </h2>
-          </motion.div>
+            <h2 className="text-3xl sm:text-4xl font-light text-[#f4f4f4]">Nuestros valores</h2>
+          </div>
 
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-5"
-          >
-            {VALUES.map((val, i) => (
-              <motion.div
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {VALUES.map((val) => (
+              <div
                 key={val.title}
-                variants={fadeUpVariant}
                 className="group bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 hover:border-white/[0.14] hover:bg-zinc-900/60 transition-all duration-300"
               >
                 <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mb-4 group-hover:bg-white/[0.08] transition-colors">
@@ -296,80 +241,49 @@ export default function AcercaDePage() {
                 </div>
                 <h3 className="text-base font-semibold text-[#f4f4f4] mb-2">{val.title}</h3>
                 <p className="text-sm text-zinc-500 leading-relaxed">{val.description}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </section>
 
         {/* ── HOW WE WORK ── */}
         <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
-          <motion.div 
-            variants={fadeUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="text-center mb-12"
-          >
+          <div className="text-center mb-12">
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
               El proceso
             </p>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#f4f4f4]">
-              Así trabajamos
-            </h2>
-          </motion.div>
+            <h2 className="text-3xl sm:text-4xl font-light text-[#f4f4f4]">Así trabajamos</h2>
+          </div>
 
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
-          >
-            {HOW_WE_WORK.map((item, i) => (
-              <motion.div
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {HOW_WE_WORK.map((item) => (
+              <div
                 key={item.step}
-                variants={fadeUpVariant}
                 className="relative bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 hover:border-white/[0.12] transition-colors duration-300"
               >
-                {/* Step number */}
                 <span className="text-5xl font-bold text-white/[0.04] leading-none block mb-4 select-none">
                   {item.step}
                 </span>
                 <h3 className="text-sm font-semibold text-[#f4f4f4] mb-2">{item.title}</h3>
                 <p className="text-xs text-zinc-500 leading-relaxed">{item.description}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </section>
 
         {/* ── TEAM ── */}
         <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
-          <motion.div 
-            variants={fadeUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="text-center mb-12"
-          >
+          <div className="text-center mb-12">
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
               Quiénes somos
             </p>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#f4f4f4]">
-              El equipo ONIX
-            </h2>
-          </motion.div>
+            <h2 className="text-3xl sm:text-4xl font-light text-[#f4f4f4]">El equipo ONIX</h2>
+          </div>
 
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-5"
-          >
-            {TEAM.map((member, i) => (
-              <motion.div
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {TEAM.map((member) => (
+              <div
                 key={member.name}
-                variants={fadeUpVariant}
                 className="bg-zinc-900/40 border border-white/[0.06] rounded-2xl p-6 text-center hover:border-white/[0.12] hover:bg-zinc-900/60 transition-all duration-300"
               >
                 <div className="w-16 h-16 rounded-full bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mx-auto mb-4 text-zinc-400">
@@ -380,20 +294,14 @@ export default function AcercaDePage() {
                   {member.role}
                 </p>
                 <p className="text-xs text-zinc-500 leading-relaxed">{member.bio}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </section>
 
         {/* ── LOCATIONS ── */}
         <section className="px-4 pb-28 max-w-5xl mx-auto w-full">
-          <motion.div
-            variants={fadeUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="bg-zinc-900/40 border border-white/[0.06] rounded-3xl p-8 sm:p-12"
-          >
+          <div className="bg-zinc-900/40 border border-white/[0.06] rounded-3xl p-8 sm:p-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
@@ -404,8 +312,8 @@ export default function AcercaDePage() {
                 </h2>
                 <div className="space-y-4">
                   {[
-                    { icon: MapPin, city: 'Bogotá, Colombia', detail: 'Operaciones y distribución local' },
-                    { icon: MapPin, city: 'Caracas, Venezuela', detail: 'Operaciones y distribución local' },
+                    { icon: MapPin, city: 'Bogotá, Colombia',   detail: 'Operaciones y distribución local' },
+                    { icon: MapPin, city: 'Caracas, Venezuela',  detail: 'Operaciones y distribución local' },
                   ].map((loc) => (
                     <div key={loc.city} className="flex items-start gap-3">
                       <loc.icon size={20} className="text-zinc-400 mt-0.5 shrink-0" />
@@ -417,9 +325,10 @@ export default function AcercaDePage() {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col gap-3">
+
+              <div>
                 <a
-                  href="https://wa.me/573001234567?text=Hola%2C%20quiero%20saber%20si%20hacen%20envíos%20a%20mi%20ciudad"
+                  href="https://wa.me/573001234567?text=Hola%2C%20quiero%20saber%20si%20hacen%20env%C3%ADos%20a%20mi%20ciudad"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -443,19 +352,12 @@ export default function AcercaDePage() {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* ── CTA ── */}
         <section className="px-4 pb-32 max-w-3xl mx-auto w-full text-center">
-          <motion.div
-            variants={fadeUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="relative bg-zinc-900/60 border border-white/[0.08] rounded-3xl p-10 sm:p-14 overflow-hidden"
-          >
-            {/* Glow */}
+          <div className="relative bg-zinc-900/60 border border-white/[0.08] rounded-3xl p-10 sm:p-14 overflow-hidden">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[150px] bg-white/[0.04] blur-[80px] pointer-events-none rounded-full" />
             <div className="relative">
               <div className="mx-auto w-16 h-16 rounded-full bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mb-6 text-zinc-400">
@@ -489,7 +391,7 @@ export default function AcercaDePage() {
                 </Link>
               </div>
             </div>
-          </motion.div>
+          </div>
         </section>
 
         <Footer />

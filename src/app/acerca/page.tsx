@@ -120,17 +120,6 @@ export default function AcercaDePage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-white/[0.03] blur-[120px] pointer-events-none rounded-full" />
 
           <div className="relative max-w-[95%] mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-zinc-400 text-xs font-medium tracking-widest uppercase mb-6">
-                <Globe size={12} />
-                Importación directa
-              </span>
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -176,9 +165,6 @@ export default function AcercaDePage() {
         <section className="px-4 pb-28 max-w-[95%] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-4">
-                Nuestra historia
-              </p>
               <h2 className="text-3xl sm:text-4xl font-light text-[#f4f4f4] mb-6 leading-snug">
                 Comenzamos porque también{' '}
                 <span className="font-semibold">éramos clientes frustrados</span>
@@ -224,9 +210,6 @@ export default function AcercaDePage() {
         {/* ── VALUES ── */}
         <section className="px-4 pb-28 max-w-[95%] mx-auto w-full">
           <div className="text-center mb-12">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
-              Lo que nos define
-            </p>
             <h2 className="text-3xl sm:text-4xl font-light text-[#f4f4f4]">Nuestros valores</h2>
           </div>
 
@@ -249,9 +232,6 @@ export default function AcercaDePage() {
         {/* ── HOW WE WORK ── */}
         <section className="px-4 pb-28 max-w-[95%] mx-auto w-full">
           <div className="text-center mb-12">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
-              El proceso
-            </p>
             <h2 className="text-3xl sm:text-4xl font-light text-[#f4f4f4]">Así trabajamos</h2>
           </div>
 
@@ -274,9 +254,6 @@ export default function AcercaDePage() {
         {/* ── TEAM ── */}
         <section className="px-4 pb-28 max-w-[95%] mx-auto w-full">
           <div className="text-center mb-12">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
-              Quiénes somos
-            </p>
             <h2 className="text-3xl sm:text-4xl font-light text-[#f4f4f4]">El equipo ONIX</h2>
           </div>
 
@@ -304,9 +281,6 @@ export default function AcercaDePage() {
           <div className="bg-zinc-900/40 border border-white/[0.06] rounded-3xl p-8 sm:p-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 mb-3">
-                  Dónde encontrarnos
-                </p>
                 <h2 className="text-3xl font-light text-[#f4f4f4] mb-4">
                   Presencia en dos países
                 </h2>

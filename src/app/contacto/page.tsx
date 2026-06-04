@@ -140,15 +140,6 @@ export default function ContactPage() {
         {/* ── Hero ── */}
         <section className="relative pt-32 pb-12 sm:pt-40 sm:pb-16 px-4">
           <div className="max-w-[95%] mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-zinc-400 text-xs font-medium tracking-widest uppercase mb-6"
-            >
-              <MessageSquare size={12} />
-              Estamos para ayudarte
-            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

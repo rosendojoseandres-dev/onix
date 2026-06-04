@@ -167,7 +167,7 @@ const ProductVisual = ({ data, isLeft }: { data: ProductData; isLeft: boolean })
     />
 
     {/* Image Container */}
-    <div className="relative h-64 w-64 sm:h-80 sm:w-80 md:h-[450px] md:w-[450px] rounded-full border border-white/5 shadow-2xl flex items-center justify-center overflow-hidden bg-white">
+    <div className="relative h-64 w-64 sm:h-80 sm:w-80 md:h-[450px] md:w-[450px] rounded-full border border-white/5 shadow-2xl flex items-center justify-center overflow-hidden bg-black/20 backdrop-blur-sm">
       <motion.div
         animate={{ y: [-10, 10, -10] }}
         transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
@@ -182,8 +182,7 @@ const ProductVisual = ({ data, isLeft }: { data: ProductData; isLeft: boolean })
             initial="initial"
             animate="animate"
             exit="exit"
-            style={{ mixBlendMode: 'multiply' }}
-            className="w-full h-full object-contain p-4"
+            className="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-4"
             draggable={false}
           />
         </AnimatePresence>

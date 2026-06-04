@@ -8,30 +8,16 @@ export default function IphoneShowcase() {
   return (
     <section className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden bg-black">
       
-      {/* 1. Atmospheric Ambient Glow (Blurred Background) */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <img 
-          src="/iphone14promax.png"
-          className="absolute inset-0 w-full h-full object-cover opacity-30 blur-[80px] scale-110 transform-gpu"
-          alt=""
-        />
-        {/* Subtle color tint to unify the glow */}
-        <div className="absolute inset-0 bg-indigo-950/20 mix-blend-color" />
-      </div>
+      {/* Background gradients for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-indigo-950/10 to-black pointer-events-none" />
 
-      {/* 2. Main Product Image (Sharp, uncropped, edges feathered) */}
+      {/* Main Product Image (Generated) */}
       <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none px-4">
-        <div className="relative w-full max-w-5xl h-full flex items-center justify-center">
-          <img 
-            src="/iphone14promax.png"
-            className="w-full h-full object-contain mix-blend-lighten opacity-100 drop-shadow-2xl"
-            style={{
-              maskImage: 'radial-gradient(ellipse 95% 95% at 50% 50%, black 50%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 95% 95% at 50% 50%, black 50%, transparent 100%)'
-            }}
-            alt="iPhone 14 Pro Max"
-          />
-        </div>
+        <img 
+          src="/iphone14_generated.png"
+          className="w-full h-full max-w-5xl object-contain mix-blend-lighten drop-shadow-2xl opacity-90 md:opacity-100 scale-110 lg:scale-125"
+          alt="iPhone 14 Pro Max"
+        />
       </div>
 
       {/* 3. Text and Specs Overlay */}
